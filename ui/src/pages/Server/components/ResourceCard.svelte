@@ -18,8 +18,8 @@
 >
 	<div class="h-full p-[2vh] -mr-[8vh] flex flex-col items-start text-start">
 		<p class="text-[1.8vh] font-medium">{label ? label : ''}</p>
-		<p class="text-gray-400">{version ? 'Version: ' + version : ''}</p>
-		<p class="text-gray-400">{author ? 'Author: ' + author : ''}</p>
+		<p class="text-gray-400">{version ? 'Versão: ' + version : ''}</p>
+		<p class="text-gray-400">{author ? 'Autor: ' + author : ''}</p>
 		{#if dropdownActive}
 			<div transition:slide={{ duration: 150 }}>
 				<p class="text-gray-400">{description ? description : ''}</p>
@@ -34,5 +34,6 @@
 		{:else}
 			<ButtonState icon="fas fa-play" resource={label} state={'start'} />
 		{/if}
+		<ButtonState icon="fas fa-cloud-download-alt" resource={label} state={'check-updates'} />
 	</div>
 </button>

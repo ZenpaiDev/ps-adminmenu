@@ -11,6 +11,10 @@ RegisterNetEvent('ps-adminmenu:server:ClearInventory', function(data, selectedDa
         return QBCore.Functions.Notify(source, locale("not_online"), 'error', 7500)
     end
 
+    if player == src then
+        return QBCore.Functions.Notify(source, locale("no_self"), 'error', 7500)
+    end
+
     if Config.Inventory == 'ox_inventory' then
         exports.ox_inventory:ClearInventory(player)
     else

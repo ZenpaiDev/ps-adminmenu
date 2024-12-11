@@ -12,7 +12,7 @@
 
 <div class="h-full w-[33vh] px-[2vh]">
 	<Header 
-		title={'Server'} 
+		title={'Resources'} 
 		hasSearch={true} 
 		onSearchInput={event => (search = event.target.value)} 
 	/>

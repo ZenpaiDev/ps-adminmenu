@@ -40,8 +40,8 @@ RegisterNetEvent("ps-adminmenu:server:givecar", function(data, selectedData)
     end
 
     local tsrc = selectedData['Player'].value
-    local plate = selectedData['Plate (Optional)'] and selectedData['Plate (Optional)'].value or vehicleData.plate
-    local garage = selectedData['Garage (Optional)'] and selectedData['Garage (Optional)'].value or Config.DefaultGarage
+    local plate = selectedData['Placa (Opcional)'] and selectedData['Placa (Opcional)'].value or vehicleData.plate
+    local garage = selectedData['Garagem (Opcional)'] and selectedData['Garagem (Opcional)'].value or Config.DefaultGarage
     local Player = QBCore.Functions.GetPlayer(tsrc)
 
     if plate and #plate < 1 then

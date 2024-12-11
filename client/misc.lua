@@ -16,13 +16,13 @@ RegisterNetEvent('ps-adminmenu:client:ToggleGodmode', function(data)
     godmode = not godmode
 
     if godmode then
-        QBCore.Functions.Notify(locale("godmode", "enabled"), 'primary')
+        QBCore.Functions.Notify(locale("godmode", "Ativado"), 'primary')
         while godmode do
             Wait(0)
             SetPlayerInvincible(cache.playerId, true)
         end
         SetPlayerInvincible(cache.playerId, false)
-        QBCore.Functions.Notify(locale("godmode", "disabled"), 'primary')
+        QBCore.Functions.Notify(locale("godmode", "Desativado"), 'primary')
     end
 end)
 
@@ -136,7 +136,7 @@ RegisterNetEvent('ps-adminmenu:client:SetAmmo', function(data, selectedData)
 
     if weapon ~= nil then
         SetPedAmmo(cache.ped, weapon, ammo)
-        QBCore.Functions.Notify(locale("set_wepaon_ammo", tostring(ammo)), 'success')
+        QBCore.Functions.Notify(locale("set_weapon_ammo", tostring(ammo)), 'success')
     else
         QBCore.Functions.Notify(locale("no_weapon"), 'error')
     end
@@ -148,7 +148,7 @@ RegisterCommand("setammo", function(source)
     local ammo = 999
     if weapon ~= nil then
         SetPedAmmo(cache.ped, weapon, ammo)
-        QBCore.Functions.Notify(locale("set_wepaon_ammo", tostring(ammo)), 'success')
+        QBCore.Functions.Notify(locale("set_weapon_ammo", tostring(ammo)), 'success')
     else
         QBCore.Functions.Notify(locale("no_weapon"), 'error')
     end
@@ -172,7 +172,7 @@ end)
 
 -- Key Bindings
 local toogleAdmin = lib.addKeybind({
-    name = 'toogleAdmin',
+    name = 'mri:toogleAdmin',
     description = locale("command_admin_desc"),
     defaultKey = Config.AdminKey,
     onPressed = function(self)
@@ -186,7 +186,7 @@ RegisterCommand('nc', function()
 end, false)
 
 local toogleNoclip = lib.addKeybind({
-    name = 'toogleNoclip',
+    name = 'mri:toogleNoclip',
     description = locale("command_noclip_desc"),
     defaultKey = Config.NoclipKey,
     onPressed = function(self)

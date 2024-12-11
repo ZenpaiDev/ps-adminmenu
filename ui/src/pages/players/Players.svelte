@@ -46,7 +46,7 @@
 
 <div class="h-full w-[33vh] px-[2vh]">
 	<Header
-		title={'Players'}
+		title={'Jogadores'}
 		hasSearch={true}
 		onSearchInput={(event) => (search = event.target.value)}
 	/>
@@ -86,10 +86,10 @@
 				ID: {$SELECTED_PLAYER.id} - {$SELECTED_PLAYER.name}
 			</p>
 			<div class="w-full h-[96.5%] pt-[2vh] flex flex-col gap-[1vh]">
-				<p class="font-medium text-[1.7vh]">Quick Actions</p>
+				<p class="font-medium text-[1.7vh]">Ações Rápidas</p>
 				<div class="w-full bg-tertiary flex rounded-[0.5vh]">
 					<button
-						title="Kick Player"
+						title="Kick"
 						class="h-[4.5vh] w-full rounded-l-[0.5vh] hover:bg-secondary
 						relative
 						before:content-[attr(data-tip)]
@@ -115,13 +115,13 @@
 
 						hover:before:opacity-100 hover:after:opacity-100
 						"
-						data-tip="Kick Player"
+						data-tip="Kick"
 						on:click={() => (kickPlayer = true)}
 					>
 						<i class="fas fa-user-minus"></i>
 					</button>
 					<button
-						title="Ban Player"
+						title="Ban"
 						class="h-[4.5vh] w-full hover:bg-secondary
 						relative
 						before:content-[attr(data-tip)]
@@ -147,13 +147,13 @@
 
 						hover:before:opacity-100 hover:after:opacity-100
 						"
-						data-tip="Ban Player"
+						data-tip="Ban"
 						on:click={() => (banPlayer = true)}
 					>
 						<i class="fas fa-ban"></i>
 					</button>
 					<button
-						title="Teleport To Player"
+						title="Teleportar"
 						class="h-[4.5vh] w-full hover:bg-secondary
 						relative
 						before:content-[attr(data-tip)]
@@ -179,7 +179,7 @@
 
 						hover:before:opacity-100 hover:after:opacity-100
 						"
-						data-tip="Teleport To Player"
+						data-tip="Teleportar"
 						on:click={() =>
 							SendNUI('clickButton', {
 								data: 'teleportToPlayer',
@@ -193,7 +193,7 @@
 						<i class="fas fa-person-walking-arrow-right"></i>
 					</button>
 					<button
-						title="Bring Player"
+						title="Trazer"
 						class="h-[4.5vh] w-full hover:bg-secondary
 						relative
 						before:content-[attr(data-tip)]
@@ -219,7 +219,7 @@
 
 						hover:before:opacity-100 hover:after:opacity-100
 						"
-						data-tip="Bring Player"
+						data-tip="Trazer"
 						on:click={() =>
 							SendNUI('clickButton', {
 								data: 'bringPlayer',
@@ -233,7 +233,7 @@
 						<i class="fas fa-person-walking-arrow-loop-left"></i>
 					</button>
 					<button
-						title="Revive Player"
+						title="Reviver"
 						class="h-[4.5vh] w-full hover:bg-secondary
 						relative
 						before:content-[attr(data-tip)]
@@ -259,7 +259,7 @@
 
 						hover:before:opacity-100 hover:after:opacity-100
 						"
-						data-tip="Revive Player"
+						data-tip="Reviver"
 						on:click={() =>
 							SendNUI('clickButton', {
 								data: 'revivePlayer',
@@ -273,7 +273,7 @@
 						<i class="fas fa-heart-pulse"></i>
 					</button>
 					<button
-						title="Spectate Player"
+						title="Modo Espectador"
 						class="h-[4.5vh] w-full hover:bg-secondary
 						relative
 						before:content-[attr(data-tip)]
@@ -299,7 +299,7 @@
 
 						hover:before:opacity-100 hover:after:opacity-100
 						"
-						data-tip="Spectate Player"
+						data-tip="Modo Espectador"
 						on:click={() =>
 							SendNUI('clickButton', {
 								data: 'spectate_player',
@@ -316,7 +316,7 @@
 				<div
 					class="h-[90%] overflow-auto flex flex-col gap-[1vh] select-text"
 				>
-					<p class="font-medium text-[1.7vh]">Licenses</p>
+					<p class="font-medium text-[1.7vh]">Licenças</p>
 					<div
 						class="w-full bg-tertiary rounded-[0.5vh] p-[1.5vh] text-[1.5vh]"
 					>
@@ -344,18 +344,18 @@
 								: ''}
 						</p>
 					</div>
-					<p class="font-medium text-[1.7vh]">Information</p>
+					<p class="font-medium text-[1.7vh]">Informação</p>
 					<div
 						class="w-full bg-tertiary rounded-[0.5vh] p-[1.5vh] text-[1.5vh]"
 					>
-						<p>CID: {$SELECTED_PLAYER.cid}</p>
-						<p>Name: {$SELECTED_PLAYER.name}</p>
+						<p>RG: {$SELECTED_PLAYER.cid}</p>
+						<p>Nome: {$SELECTED_PLAYER.name}</p>
 						<p>Job: {$SELECTED_PLAYER.job}</p>
-						<p>Cash: ${$SELECTED_PLAYER.cash}</p>
-						<p>Bank: ${$SELECTED_PLAYER.bank}</p>
-						<p>Phone: {$SELECTED_PLAYER.phone}</p>
+						<p>Carteira: R$ {$SELECTED_PLAYER.cash}</p>
+						<p>Banco: R$ {$SELECTED_PLAYER.bank}</p>
+						<p>Telefone: {$SELECTED_PLAYER.phone}</p>
 					</div>
-					<p class="font-medium text-[1.7vh]">Vehicles</p>
+					<p class="font-medium text-[1.7vh]">Veículos</p>
 					{#each $SELECTED_PLAYER.vehicles as vehicle}
 						<div
 							class="w-full bg-tertiary flex flex-row rounded-[0.5vh] p-[1.5vh] text-[1.5vh]"
@@ -364,7 +364,7 @@
 								<p class=" font-medium text-[1.7vh]">
 									{vehicle.label}
 								</p>
-								<p>Plate: {vehicle.plate}</p>
+								<p>Placa: {vehicle.plate}</p>
 							</div>
 							<div class="ml-auto h-full flex items-center">
 								<button
@@ -379,7 +379,7 @@
 											},
 										})}
 								>
-									Spawn
+									Spawnar
 								</button>
 							</div>
 						</div>

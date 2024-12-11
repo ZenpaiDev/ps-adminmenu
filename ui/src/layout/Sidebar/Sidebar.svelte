@@ -4,11 +4,11 @@
 	import { SendNUI } from '@utils/SendNUI'
 
 	let navigation = [
-		{ value: 'Staffchat', icon: 'fas fa-message' },
-		{ value: 'Players', icon: 'fas fa-users' },
-		{ value: 'Server', icon: 'fas fa-server' },
-		{ value: 'Commands', icon: 'fas fa-slash' },
-		{ value: 'Actions', icon: 'fas fa-wand-magic-sparkles' },
+		{ value: 'Chat Staff', icon: 'fas fa-message' },
+		{ value: 'Jogadores', icon: 'fas fa-users' },
+		{ value: 'Resources', icon: 'fas fa-server' },
+		{ value: 'Comandos', icon: 'fas fa-slash' },
+		{ value: 'Ações', icon: 'fas fa-wand-magic-sparkles' },
 	]
 </script>
 

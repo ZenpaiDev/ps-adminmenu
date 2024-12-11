@@ -198,7 +198,7 @@ RegisterNetEvent('ps-adminmenu:server:TakeMoney', function(data, selectedData)
     end
 
     QBCore.Functions.Notify(src,
-        locale((moneyType == "crypto" and "take_money_crypto" or "take_money"), tonumber(amount) .. "$",
+        locale((moneyType == "crypto" and "take_money_crypto" or "take_money"), tonumber(amount) .. "R$",
             Player.PlayerData.charinfo.firstname .. " " .. Player.PlayerData.charinfo.lastname), "success")
 end)
 
@@ -212,13 +212,13 @@ RegisterNetEvent('ps-adminmenu:server:ToggleBlackout', function(data)
     local src = source
 
     if Blackout then
-        TriggerClientEvent('QBCore:Notify', src, locale("blackout", "enabled"), 'primary')
+        TriggerClientEvent('QBCore:Notify', src, locale("blackout", "Ativado"), 'primary')
         while Blackout do
             Wait(0)
             exports["qb-weathersync"]:setBlackout(true)
         end
         exports["qb-weathersync"]:setBlackout(false)
-        TriggerClientEvent('QBCore:Notify', src, locale("blackout", "disabled"), 'primary')
+        TriggerClientEvent('QBCore:Notify', src, locale("blackout", "Desativado"), 'primary')
     end
 end)
 

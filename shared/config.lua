@@ -1,316 +1,307 @@
 Config = Config or {}
 
-Config.Fuel = "ps-fuel"        -- "ps-fuel", "LegacyFuel", "ox_fuel"
+Config.Fuel = "cdn-fuel"        -- "ps-fuel", "LegacyFuel", "ox_fuel"
 Config.ResourcePerms = 'admin' -- permission to control resource(start stop restart)
 Config.ShowCommandsPerms = 'admin' -- permission to show all commands
 Config.RenewedPhone = false    -- if you use qb-phone from renewed. (multijob)
 
 -- Key Bindings
 Config.Keybindings = true
-Config.AdminKey = "PageDown"
-Config.NoclipKey = "PageUp"
+Config.AdminKey = "0"
+Config.NoclipKey = "9"
 
 -- Give Car
-Config.DefaultGarage = "Alta Garage"
+Config.DefaultGarage = "Pillbox Garage Parking"
 
 Config.Actions = {
     ["admin_car"] = {
-        label = "Admin Car",
+        label = "/admincar",
         type = "client",
         event = "ps-adminmenu:client:Admincar",
         perms = "mod",
     },
 
     ["ban_player"] = {
-        label = "Ban Player",
+        label = "Banir Jogador",
         perms = "mod",
         dropdown = {
             { label = "Player", option = "dropdown", data = "players" },
-            { label = "Reason", option = "text" },
+            { label = "Razão", option = "text" },
             {
-                label = "Duration",
+                label = "Duração",
                 option = "dropdown",
                 data = {
-                    { label = "Permanent",  value = "2147483647" },
-                    { label = "10 Minutes", value = "600" },
-                    { label = "30 Minutes", value = "1800" },
-                    { label = "1 Hour",     value = "3600" },
-                    { label = "6 Hours",    value = "21600" },
-                    { label = "12 Hours",   value = "43200" },
-                    { label = "1 Day",      value = "86400" },
-                    { label = "3 Days",     value = "259200" },
-                    { label = "1 Week",     value = "604800" },
-                    { label = "3 Week",     value = "1814400" },
+                    { label = "Permanente",  value = "2147483647" },
+                    { label = "10 Minutos", value = "600" },
+                    { label = "30 Minutos", value = "1800" },
+                    { label = "1 Hora",     value = "3600" },
+                    { label = "6 Horas",    value = "21600" },
+                    { label = "12 Horas",   value = "43200" },
+                    { label = "1 Dia",      value = "86400" },
+                    { label = "3 Dias",     value = "259200" },
+                    { label = "1 Semana",   value = "604800" },
+                    { label = "3 Semanas",  value = "1814400" },
                 },
             },
-            { label = "Confirm", option = "button", type = "server", event = "ps-adminmenu:server:BanPlayer" },
+            { label = "Confirmar", option = "button", type = "server", event = "ps-adminmenu:server:BanPlayer" },
         },
     },
 
     ["bring_player"] = {
-        label = "Bring Player",
+        label = "Puxar Jogador",
         perms = "mod",
         dropdown = {
             { label = "Player",  option = "dropdown", data = "players" },
-            { label = "Confirm", option = "button",   type = "server", event = "ps-adminmenu:server:BringPlayer" },
+            { label = "Confirmar", option = "button",   type = "server", event = "ps-adminmenu:server:BringPlayer" },
         },
     },
 
     ["change_weather"] = {
-        label = "Change Weather",
+        label = "Alterar Clima",
         perms = "mod",
         dropdown = {
             {
                 label = "Weather",
                 option = "dropdown",
                 data = {
-                    { label = "Extrasunny", value = "Extrasunny" },
-                    { label = "Clear",      value = "Clear" },
-                    { label = "Neutral",    value = "Neutral" },
-                    { label = "Smog",       value = "Smog" },
-                    { label = "Foggy",      value = "Foggy" },
-                    { label = "Overcast",   value = "Overcast" },
-                    { label = "Clouds",     value = "Clouds" },
-                    { label = "Clearing",   value = "Clearing" },
-                    { label = "Rain",       value = "Rain" },
-                    { label = "Thunder",    value = "Thunder" },
-                    { label = "Snow",       value = "Snow" },
-                    { label = "Blizzard",   value = "Blizzard" },
-                    { label = "Snowlight",  value = "Snowlight" },
-                    { label = "Xmas",       value = "Xmas" },
+                    { label = "Extraensolarado", value = "Extrasunny" },
+                    { label = "Limpo",      value = "Clear" },
+                    { label = "Neutro",     value = "Neutral" },
+                    { label = "Nevoeiro",   value = "Smog" },
+                    { label = "Neblina",    value = "Foggy" },
+                    { label = "Nublado",    value = "Overcast" },
+                    { label = "Nuvens",     value = "Clouds" },
+                    { label = "Limpeza",    value = "Clearing" },
+                    { label = "Chuva",      value = "Rain" },
+                    { label = "Trovão",     value = "Thunder" },
+                    { label = "Neve",       value = "Snow" },
+                    { label = "Tempestade de Neve", value = "Blizzard" },
+                    { label = "Neve Leve",  value = "Snowlight" },
+                    { label = "Natal",      value = "Xmas" },
                     { label = "Halloween",  value = "Halloween" },
                 },
             },
-            { label = "Confirm", option = "button", type = "client", event = "ps-adminmenu:client:ChangeWeather" },
+            { label = "Confirmar", option = "button", type = "client", event = "ps-adminmenu:client:ChangeWeather" },
         },
     },
 
     ["change_time"] = {
-        label = "Change Time",
+        label = "Alterar Horário",
         perms = "mod",
         dropdown = {
             {
                 label = "Time Events",
                 option = "dropdown",
                 data = {
-                    { label = "Sunrise", value = "06" },
-                    { label = "Morning", value = "09" },
-                    { label = "Noon",    value = "12" },
-                    { label = "Sunset",  value = "21" },
-                    { label = "Evening", value = "22" },
-                    { label = "Night",   value = "24" },
+                    { label = "Amanhecer", value = "06" },
+                    { label = "Manhã", value = "09" },
+                    { label = "Meio-dia",    value = "12" },
+                    { label = "Pôr do Sol",  value = "21" },
+                    { label = "Entardecer", value = "22" },
+                    { label = "Noite",   value = "24" },
                 },
             },
-            { label = "Confirm", option = "button", type = "client", event = "ps-adminmenu:client:ChangeTime" },
+            { label = "Confirmar", option = "button", type = "client", event = "ps-adminmenu:client:ChangeTime" },
         },
     },
 
     ["change_plate"] = {
-        label = "Change Plate",
+        label = "Alterar Placa",
         perms = "mod",
         dropdown = {
             { label = "Plate",   option = "text" },
-            { label = "Confirm", option = "button", type = "client", event = "ps-adminmenu:client:ChangePlate" },
+            { label = "Confirmar", option = "button", type = "client", event = "ps-adminmenu:client:ChangePlate" },
         },
     },
 
     ["clear_inventory"] = {
-        label = "Clear Inventory",
+        label = "Limpar Inventário",
         perms = "mod",
         dropdown = {
             { label = "Player",  option = "dropdown", data = "players" },
-            { label = "Confirm", option = "button",   type = "server", event = "ps-adminmenu:server:ClearInventory" },
+            { label = "Confirmar", option = "button",   type = "server", event = "ps-adminmenu:server:ClearInventory" },
         },
     },
 
     ["clear_inventory_offline"] = {
-        label = "Clear Inventory Offline",
+        label = "Limpar Inventário Offline",
         perms = "mod",
         dropdown = {
-            { label = "Citizen ID", option = "text",   data = "players" },
-            { label = "Confirm",    option = "button", type = "server", event = "ps-adminmenu:server:ClearInventoryOffline" },
+            { label = "ID do Cidadão", option = "text",   data = "players" },
+            { label = "Confirmar",    option = "button", type = "server", event = "ps-adminmenu:server:ClearInventoryOffline" },
         },
     },
 
     ["clothing_menu"] = {
-        label = "Give Clothing Menu",
+        label = "Dar Menu de Roupas",
         perms = "mod",
         dropdown = {
             { label = "Player",  option = "dropdown", data = "players" },
-            { label = "Confirm", option = "button",   type = "server", event = "ps-adminmenu:server:ClothingMenu" },
+            { label = "Confirmar", option = "button",   type = "server", event = "ps-adminmenu:server:ClothingMenu" },
         },
     },
 
     ["set_ped"] = {
-        label = "Set Ped",
+        label = "Definir Ped",
         perms = "mod",
         dropdown = {
             { label = "Player",     option = "dropdown", data = "players" },
-            { label = "Ped Models", option = "dropdown", data = "pedlist" },
-            { label = "Confirm",    option = "button",   type = "server", event = "ps-adminmenu:server:setPed" },
+            { label = "Modelos de Ped", option = "dropdown", data = "pedlist" },
+            { label = "Confirmar",    option = "button",   type = "server", event = "ps-adminmenu:server:setPed" },
         },
     },
 
     ["copy_coords"] = {
-        label = "Copy Coords",
+        label = "Copiar Coordenadas",
         perms = "mod",
         dropdown = {
             {
                 label = "Copy Coords",
                 option = "dropdown",
                 data = {
-                    { label = "Copy Vector2", value = "vector2" },
-                    { label = "Copy Vector3", value = "vector3" },
-                    { label = "Copy Vector4",    value = "vector4" },
-                    { label = "Copy Heading",  value = "heading" },
+                    { label = "Copiar Vector2", value = "vector2" },
+                    { label = "Copiar Vector3", value = "vector3" },
+                    { label = "Copiar Vector4", value = "vector4" },
+                    { label = "Copiar Direção", value = "heading" },
                 },
             },
-            { label = "Copy to Clipboard", option = "button", type = "client", event = "ps-adminmenu:client:copyToClipboard"},
+            { label = "Copiar para Área de Transferência", option = "button", type = "client", event = "ps-adminmenu:client:copyToClipboard"},
         },
     },
 
     ["delete_vehicle"] = {
-        label = "Delete Vehicle",
+        label = "Deletar Veículo",
         type = "command",
         event = "dv",
         perms = "mod",
     },
 
     ["freeze_player"] = {
-        label = "Freeze Player",
+        label = "Congelar Jogador",
         perms = "mod",
         dropdown = {
             { label = "Player",  option = "dropdown", data = "players" },
-            { label = "Confirm", option = "button",   type = "server", event = "ps-adminmenu:server:FreezePlayer" },
+            { label = "Confirmar", option = "button",   type = "server", event = "ps-adminmenu:server:FreezePlayer" },
         },
     },
 
     ["drunk_player"] = {
-        label = "Make Player Drunk",
+        label = "Deixar Jogador Bêbado",
         perms = "mod",
         dropdown = {
             { label = "Player",  option = "dropdown", data = "players" },
-            { label = "Confirm", option = "button",   type = "server", event = "ps-adminmenu:server:DrunkPlayer" },
+            { label = "Confirmar", option = "button",   type = "server", event = "ps-adminmenu:server:DrunkPlayer" },
         },
     },
 
     ["remove_stress"] = {
-        label = "Remove Stress",
+        label = "Remover Estresse",
         perms = "mod",
         dropdown = {
-            { label = "Player (Optional)", option = "dropdown", data = "players" },
-            { label = "Confirm",           option = "button",   type = "server", event = "ps-adminmenu:server:RemoveStress" },
+            { label = "Jogador (Opcional)", option = "dropdown", data = "players" },
+            { label = "Confirmar",           option = "button",   type = "server", event = "ps-adminmenu:server:RemoveStress" },
         },
     },
 
     ["set_ammo"] = {
-        label = "Set Ammo",
+        label = "Definir Munição",
         perms = "admin",
         dropdown = {
-            { label = "Ammo Ammount", option = "text" },
-            { label = "Confirm",      option = "button", type = "client", event = "ps-adminmenu:client:SetAmmo" },
+            { label = "Quantidade de Munição", option = "text" },
+            { label = "Confirmar",      option = "button", type = "client", event = "ps-adminmenu:client:SetAmmo" },
         },
     },
 
-    -- ["nui_focus"] = {
-    --     label = "Give NUI Focus",
-    --     perms = "mod",
-    --     dropdown = {
-    --         { label = "Player",  option = "dropdown", data = "players" },
-    --         { label = "Confirm", option = "button",   type = "client", event = "" },
-    --     },
-    -- },
-
     ["god_mode"] = {
-        label = "God Mode",
+        label = "Modo Deus",
         type = "client",
         event = "ps-adminmenu:client:ToggleGodmode",
         perms = "mod",
     },
 
     ["give_car"] = {
-        label = "Give Car",
+        label = "Dar Carro",
         perms = "admin",
         dropdown = {
             { label = "Vehicle",           option = "dropdown", data = "vehicles" },
             { label = "Player",            option = "dropdown", data = "players" },
-            { label = "Plate (Optional)",  option = "text" },
-            { label = "Garage (Optional)", option = "text" },
-            { label = "Confirm",           option = "button",   type = "server",  event = "ps-adminmenu:server:givecar" },
+            { label = "Placa (Opcional)",  option = "text" },
+            { label = "Garagem (Opcional)", option = "text" },
+            { label = "Confirmar",           option = "button",   type = "server",  event = "ps-adminmenu:server:givecar" },
         }
     },
 
     ["invisible"] = {
-        label = "Invisible",
+        label = "Invisível",
         type = "client",
         event = "ps-adminmenu:client:ToggleInvisible",
         perms = "mod",
     },
 
     ["blackout"] = {
-        label = "Toggle Blackout",
+        label = "Ativar/Desativar Queda de Energia",
         type = "server",
         event = "ps-adminmenu:server:ToggleBlackout",
         perms = "mod",
     },
 
     ["toggle_duty"] = {
-        label = "Toggle Duty",
+        label = "Ativar/Desativar Serviço",
         type = "server",
         event = "QBCore:ToggleDuty",
         perms = "mod",
     },
 
     ["toggle_laser"] = {
-        label = "Toggle Laser",
+        label = "Ativar/Desativar Laser",
         type = "client",
         event = "ps-adminmenu:client:ToggleLaser",
         perms = "mod",
     },
 
     ["set_perms"] = {
-        label = "Set Perms",
+        label = "Definir Permissões",
         perms = "admin",
         dropdown = {
             { label = "Player",  option = "dropdown", data = "players" },
             {
-                label = "Permissions",
+                label = "Permissões",
                 option = "dropdown",
                 data = {
-                    { label = "Mod",   value = "mod" },
-                    { label = "Admin", value = "admin" },
-                    { label = "God",   value = "god" },
+                    { label = "Moderador", value = "mod" },
+                    { label = "Administrador", value = "admin" },
+                    { label = "Deus", value = "god" },
                 },
             },
-            { label = "Confirm", option = "button",   type = "server", event = "ps-adminmenu:server:SetPerms" },
+            { label = "Confirmar", option = "button",   type = "server", event = "ps-adminmenu:server:SetPerms" },
         },
     },
 
     ["set_bucket"] = {
-        label = "Set Routing Bucket",
+        label = "Definir Bucket de Roteamento",
         perms = "mod",
         dropdown = {
             { label = "Player",  option = "dropdown", data = "players" },
             { label = "Bucket",  option = "text" },
-            { label = "Confirm", option = "button",   type = "server", event = "ps-adminmenu:server:SetBucket" },
+            { label = "Confirmar", option = "button",   type = "server", event = "ps-adminmenu:server:SetBucket" },
         },
     },
 
     ["get_bucket"] = {
-        label = "Get Routing Bucket",
+        label = "Obter Bucket de Roteamento",
         perms = "mod",
         dropdown = {
             { label = "Player",  option = "dropdown", data = "players" },
-            { label = "Confirm", option = "button",   type = "server", event = "ps-adminmenu:server:GetBucket" },
+            { label = "Confirmar", option = "button",   type = "server", event = "ps-adminmenu:server:GetBucket" },
         },
     },
 
     ["mute_player"] = {
-        label = "Mute Player",
+        label = "Silenciar Jogador",
         perms = "mod",
         dropdown = {
             { label = "Player",  option = "dropdown", data = "players" },
-            { label = "Confirm", option = "button",   type = "client", event = "ps-adminmenu:client:MutePlayer" },
+            { label = "Confirmar", option = "button",   type = "client", event = "ps-adminmenu:client:MutePlayer" },
         },
     },
 
@@ -322,326 +313,325 @@ Config.Actions = {
     },
 
     ["open_inventory"] = {
-        label = "Open Inventory",
+        label = "Abrir Inventário",
         perms = "mod",
         dropdown = {
             { label = "Player",  option = "dropdown", data = "players" },
-            { label = "Confirm", option = "button",   type = "client", event = "ps-adminmenu:client:openInventory" },
+            { label = "Confirmar", option = "button",   type = "client", event = "ps-adminmenu:client:openInventory" },
         },
     },
 
     ["open_stash"] = {
-        label = "Open Stash",
+        label = "Abrir Depósito",
         perms = "mod",
         dropdown = {
             { label = "Stash",   option = "text" },
-            { label = "Confirm", option = "button", type = "client", event = "ps-adminmenu:client:openStash" },
+            { label = "Confirmar", option = "button", type = "client", event = "ps-adminmenu:client:openStash" },
         },
     },
 
     ["open_trunk"] = {
-        label = "Open Trunk",
+        label = "Abrir Porta-malas",
         perms = "mod",
         dropdown = {
             { label = "Plate",   option = "text" },
-            { label = "Confirm", option = "button", type = "client", event = "ps-adminmenu:client:openTrunk" },
+            { label = "Confirmar", option = "button", type = "client", event = "ps-adminmenu:client:openTrunk" },
         },
     },
 
     ["change_vehicle_state"] = {
-        label = "Set Vehicle Garage State",
+        label = "Definir Estado do Veículo na Garagem",
         perms = "mod",
         dropdown = {
             { label = "Plate",   option = "text" },
             {
-                label = "State",
+                label = "Estado",
                 option = "dropdown",
                 data = {
-                    { label = "In",  value = "1" },
-                    { label = "Out", value = "0" },
+                    { label = "Dentro",  value = "1" },
+                    { label = "Fora", value = "0" },
                 },
             },
-            { label = "Confirm", option = "button", type = "server", event = "ps-adminmenu:server:SetVehicleState" },
+            { label = "Confirmar", option = "button", type = "server", event = "ps-adminmenu:server:SetVehicleState" },
         },
     },
 
     ["revive_all"] = {
-        label = "Revive All",
+        label = "Reviver Todos",
         type = "server",
         event = "ps-adminmenu:server:ReviveAll",
         perms = "mod",
     },
 
     ["revive_player"] = {
-        label = "Revive Player",
+        label = "Reviver Jogador",
         perms = "mod",
         dropdown = {
             { label = "Player",  option = "dropdown", data = "players" },
-            { label = "Confirm", option = "button",   type = "server", event = "ps-adminmenu:server:Revive" },
+            { label = "Confirmar", option = "button",   type = "server", event = "ps-adminmenu:server:Revive" },
         },
     },
 
     ["revive_radius"] = {
-        label = "Revive Radius",
+        label = "Reviver Raio",
         type = "server",
         event = "ps-adminmenu:server:ReviveRadius",
         perms = "mod",
     },
 
     ["refuel_vehicle"] = {
-        label = "Refuel Vehicle",
+        label = "Reabastecer Veículo",
         type = "client",
         event = "ps-adminmenu:client:RefuelVehicle",
         perms = "mod",
     },
 
     ["set_job"] = {
-        label = "Set Job",
+        label = "Definir Emprego",
         perms = "mod",
         dropdown = {
             { label = "Player",  option = "dropdown", data = "players" },
             { label = "Job",     option = "dropdown", data = "jobs" },
             { label = "Grade",   option = "text",     data = "grades" },
-            { label = "Confirm", option = "button",   type = "server", event = "ps-adminmenu:server:SetJob" },
+            { label = "Confirmar", option = "button",   type = "server", event = "ps-adminmenu:server:SetJob" },
         },
     },
 
     ["set_gang"] = {
-        label = "Set Gang",
+        label = "Definir Gangue",
         perms = "mod",
         dropdown = {
             { label = "Player",  option = "dropdown", data = "players" },
             { label = "Gang",    option = "dropdown", data = "gangs" },
             { label = "Grade",   option = "text",     data = "grades" },
-            { label = "Confirm", option = "button",   type = "server", event = "ps-adminmenu:server:SetGang" },
+            { label = "Confirmar", option = "button",   type = "server", event = "ps-adminmenu:server:SetGang" },
         },
     },
 
     ["give_money"] = {
-        label = "Give Money",
+        label = "Dar Dinheiro",
         perms = "admin",
         dropdown = {
             { label = "Player", option = "dropdown", data = "players" },
-            { label = "Amount", option = "text" },
+            { label = "Quantidade", option = "text" },
             {
-                label = "Type",
+                label = "Tipo",
                 option = "dropdown",
                 data = {
-                    { label = "Cash",   value = "cash" },
-                    { label = "Bank",   value = "bank" },
-                    { label = "Crypto", value = "crypto" },
+                    { label = "Dinheiro",   value = "cash" },
+                    { label = "Banco",   value = "bank" },
+                    { label = "Cripto", value = "crypto" },
                 },
             },
-            { label = "Confirm", option = "button", type = "server", event = "ps-adminmenu:server:GiveMoney" },
+            { label = "Confirmar", option = "button", type = "server", event = "ps-adminmenu:server:GiveMoney" },
         },
     },
 
     ["give_money_all"] = {
-        label = "Give Money to All",
+        label = "Dar Dinheiro para Todos",
         perms = "admin",
         dropdown = {
-            { label = "Amount",  option = "text" },
+            { label = "Quantidade",  option = "text" },
             {
-                label = "Type",
+                label = "Tipo",
                 option = "dropdown",
                 data = {
-                    { label = "Cash",   value = "cash" },
-                    { label = "Bank",   value = "bank" },
-                    { label = "Crypto", value = "crypto" },
+                    { label = "Dinheiro",   value = "cash" },
+                    { label = "Banco",   value = "bank" },
+                    { label = "Cripto", value = "crypto" },
                 },
             },
-            { label = "Confirm", option = "button", type = "server", event = "ps-adminmenu:server:GiveMoneyAll" },
+            { label = "Confirmar", option = "button", type = "server", event = "ps-adminmenu:server:GiveMoneyAll" },
         },
     },
 
     ["remove_money"] = {
-        label = "Remove Money",
+        label = "Remover Dinheiro",
         perms = "admin",
         dropdown = {
             { label = "Player", option = "dropdown", data = "players" },
-            { label = "Amount", option = "text" },
+            { label = "Quantidade", option = "text" },
             {
-                label = "Type",
+                label = "Tipo",
                 option = "dropdown",
                 data = {
-                    { label = "Cash", value = "cash" },
-                    { label = "Bank", value = "bank" },
+                    { label = "Dinheiro", value = "cash" },
+                    { label = "Banco", value = "bank" },
                 },
             },
-            { label = "Confirm", option = "button", type = "server", event = "ps-adminmenu:server:TakeMoney" },
+            { label = "Confirmar", option = "button", type = "server", event = "ps-adminmenu:server:TakeMoney" },
         },
     },
 
     ["give_item"] = {
-        label = "Give Item",
+        label = "Dar Item",
         perms = "mod",
         dropdown = {
             { label = "Player",  option = "dropdown", data = "players" },
             { label = "Item",    option = "dropdown", data = "items" },
-            { label = "Amount",  option = "text" },
-            { label = "Confirm", option = "button",   type = "server", event = "ps-adminmenu:server:GiveItem" },
+            { label = "Quantidade",  option = "text" },
+            { label = "Confirmar", option = "button",   type = "server", event = "ps-adminmenu:server:GiveItem" },
         },
     },
 
     ["give_item_all"] = {
-        label = "Give Item to All",
+        label = "Dar Item para Todos",
         perms = "mod",
         dropdown = {
             { label = "Item",    option = "dropdown", data = "items" },
-            { label = "Amount",  option = "text" },
-            { label = "Confirm", option = "button",   type = "server", event = "ps-adminmenu:server:GiveItemAll" },
+            { label = "Quantidade",  option = "text" },
+            { label = "Confirmar", option = "button",   type = "server", event = "ps-adminmenu:server:GiveItemAll" },
         },
     },
 
     ["spawn_vehicle"] = {
-        label = "Spawn Vehicle",
+        label = "Gerar Veículo",
         perms = "mod",
         dropdown = {
             { label = "Vehicle", option = "dropdown", data = "vehicles" },
-            { label = "Confirm", option = "button",   type = "client",  event = "ps-adminmenu:client:SpawnVehicle" },
+            { label = "Confirmar", option = "button",   type = "client",  event = "ps-adminmenu:client:SpawnVehicle" },
         },
     },
 
     ["fix_vehicle"] = {
-        label = "Fix Vehicle",
+        label = "Consertar Veículo",
         type = "command",
         event = "fix",
         perms = "mod",
     },
 
     ["fix_vehicle_for"] = {
-        label = "Fix Vehicle for player",
+        label = "Consertar Veículo para jogador",
         perms = "mod",
         dropdown = {
             { label = "Player",  option = "dropdown", data = "players" },
-            { label = "Confirm", option = "button",   type = "server", event = "ps-adminmenu:server:FixVehFor" },
+            { label = "Confirmar", option = "button",   type = "server", event = "ps-adminmenu:server:FixVehFor" },
         },
     },
 
     ["spectate_player"] = {
-        label = "Spectate Player",
+        label = "Espectar Jogador",
         perms = "mod",
         dropdown = {
             { label = "Player",  option = "dropdown", data = "players" },
-            { label = "Confirm", option = "button",   type = "server", event = "ps-adminmenu:server:SpectateTarget" },
+            { label = "Confirmar", option = "button",   type = "server", event = "ps-adminmenu:server:SpectateTarget" },
         },
     },
 
     ["telport_to_player"] = {
-        label = "Teleport to Player",
+        label = "Teleportar para Jogador",
         perms = "mod",
         dropdown = {
             { label = "Player",  option = "dropdown", data = "players" },
-            { label = "Confirm", option = "button",   type = "server", event = "ps-adminmenu:server:TeleportToPlayer" },
+            { label = "Confirmar", option = "button",   type = "server", event = "ps-adminmenu:server:TeleportToPlayer" },
         },
     },
 
     ["telport_to_coords"] = {
-        label = "Teleport to Coords",
+        label = "Teleportar para Coordenadas",
         perms = "mod",
         dropdown = {
-            { label = "Coords",  option = "text" },
-            { label = "Confirm", option = "button", type = "client", event = "ps-adminmenu:client:TeleportToCoords" },
+            { label = "Coordenadas",  option = "text" },
+            { label = "Confirmar", option = "button", type = "client", event = "ps-adminmenu:client:TeleportToCoords" },
         },
     },
 
     ["teleport_to_location"] = {
-        label = "Teleport to Location",
+        label = "Teleportar para Localização",
         perms = "mod",
         dropdown = {
-            { label = "Location", option = "dropdown", data = "locations" },
-            { label = "Confirm",  option = "button",   type = "client",   event = "ps-adminmenu:client:TeleportToLocation" },
+            { label = "Localização", option = "dropdown", data = "locations" },
+            { label = "Confirmar",  option = "button",   type = "client",   event = "ps-adminmenu:client:TeleportToLocation" },
         },
     },
 
     ["teleport_to_marker"] = {
-        label = "Teleport to Marker",
+        label = "Teleportar para Marcador",
         type = "command",
         event = "tpm",
         perms = "mod",
     },
 
     ["teleport_back"] = {
-        label = "Teleport Back",
+        label = "Teleportar de Volta",
         type = "client",
         event = "ps-adminmenu:client:TeleportBack",
         perms = "mod",
     },
 
     ["vehicle_dev"] = {
-        label = "Vehicle Dev Menu",
+        label = "Menu de Desenvolvimento de Veículos",
         type = "client",
         event = "ps-adminmenu:client:ToggleVehDevMenu",
         perms = "mod",
     },
 
     ["toggle_coords"] = {
-        label = "Toggle Coords",
+        label = "Ativar/Desativar Coordenadas",
         type = "client",
         event = "ps-adminmenu:client:ToggleCoords",
         perms = "mod",
     },
 
     ["toggle_blips"] = {
-        label = "Toggle Blips",
+        label = "Ativar/Desativar Blips",
         type = "client",
         event = "ps-adminmenu:client:toggleBlips",
         perms = "mod",
     },
 
     ["toggle_names"] = {
-        label = "Toggle Names",
+        label = "Ativar/Desativar Nomes",
         type = "client",
         event = "ps-adminmenu:client:toggleNames",
         perms = "mod",
     },
 
     ["toggle_cuffs"] = {
-        label = "Toggle Cuffs",
+        label = "Ativar/Desativar Algemas",
         perms = "mod",
         dropdown = {
             { label = "Player",  option = "dropdown", data = "players" },
-            { label = "Confirm", option = "button",   type = "server", event = "ps-adminmenu:server:CuffPlayer" },
+            { label = "Confirmar", option = "button",   type = "server", event = "ps-adminmenu:server:CuffPlayer" },
         },
     },
 
     ["max_mods"] = {
-        label = "Max Vehicle Mods",
+        label = "Maximizar Mods do Veículo",
         type = "client",
         event = "ps-adminmenu:client:maxmodVehicle",
         perms = "mod",
     },
 
     ["warn_player"] = {
-        label = "Warn Player",
+        label = "Alertar Jogador",
         perms = "mod",
         dropdown = {
             { label = "Player",  option = "dropdown", data = "players" },
-            { label = "Reason",  option = "text" },
-            { label = "Confirm", option = "button",   type = "server", event = "ps-adminmenu:server:WarnPlayer" },
+            { label = "Razão",  option = "text" },
+            { label = "Confirmar", option = "button",   type = "server", event = "ps-adminmenu:server:WarnPlayer" },
         },
     },
 
     ["infinite_ammo"] = {
-        label = "Infinite Ammo",
+        label = "Munição Infinita",
         type = "client",
         event = "ps-adminmenu:client:setInfiniteAmmo",
         perms = "mod",
     },
 
     ["kick_player"] = {
-        label = "Kick Player",
+        label = "Expulsar Jogador",
         perms = "mod",
         dropdown = {
             { label = "Player",  option = "dropdown", data = "players" },
-            { label = "Reason",  option = "text" },
-            { label = "Confirm", option = "button",   type = "server", event = "ps-adminmenu:server:KickPlayer" },
+            { label = "Razão",  option = "text" },
+            { label = "Confirmar", option = "button",   type = "server", event = "ps-adminmenu:server:KickPlayer" },
         },
     },
 
-
     ["play_sound"] = {
-        label = "Play Sound",
+        label = "Tocar Som",
         perms = "mod",
         dropdown = {
             { label = "Player",     option = "dropdown", data = "players" },
@@ -649,49 +639,49 @@ Config.Actions = {
                 label = "Sound",
                 option = "dropdown",
                 data = {
-                    { label = "Alert",      value = "alert" },
-                    { label = "Cuff",       value = "cuff" },
-                    { label = "Air Wrench", value = "airwrench" },
+                    { label = "Alerta",      value = "alert" },
+                    { label = "Algema",       value = "cuff" },
+                    { label = "Chave de Ar", value = "airwrench" },
                 },
             },
-            { label = "Play Sound", option = "button",   type = "client", event = "ps-adminmenu:client:PlaySound" },
+            { label = "Tocar Som", option = "button",   type = "client", event = "ps-adminmenu:client:PlaySound" },
         },
     },
 }
 
 Config.PlayerActions = {
     ["teleportToPlayer"] = {
-        label = "Teleport to Player",
+        label = "Teleportar para Jogador",
         type = "server",
         event = "ps-adminmenu:server:TeleportToPlayer",
         perms = "mod",
     },
     ["bringPlayer"] = {
-        label = "Bring Player",
+        label = "Puxar Jogador",
         type = "server",
         event = "ps-adminmenu:server:BringPlayer",
         perms = "mod",
     },
     ["revivePlayer"] = {
-        label = "Revive Player",
+        label = "Reviver Jogador",
         event = "ps-adminmenu:server:Revive",
         perms = "mod",
         type = "server"
     },
     ["spawnPersonalVehicle"] = {
-        label = "Spawn Personal Vehicle",
+        label = "Gerar Veículo Pessoal",
         event = "ps-adminmenu:client:SpawnPersonalVehicle",
         perms = "mod",
         type = "client"
     },
     ["banPlayer"] = {
-        label = "Ban Player",
+        label = "Banir Jogador",
         event = "ps-adminmenu:server:BanPlayer",
         perms = "mod",
         type = "server"
     },
     ["kickPlayer"] = {
-        label = "Kick Player",
+        label = "Expulsar Jogador",
         event = "ps-adminmenu:server:KickPlayer",
         perms = "mod",
         type = "server"
@@ -703,7 +693,7 @@ Config.OtherActions = {
         type = "client",
         event = "ps-adminmenu:client:ToggleDev",
         perms = "admin",
-        label = "Toggle Devmode"
+        label = "Ativar/Desativar Modo Desenvolvedor"
     }
 }
 

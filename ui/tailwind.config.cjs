@@ -1,5 +1,5 @@
 module.exports = {
-  darkmode: true,
+  darkmode: false,
   content: [
     "./index.html",
     "./src/**/*.{svelte,js,ts,jsx,tsx}",
@@ -7,14 +7,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#141517',
-        secondary: '#1a1b1e',
-        tertiary: '#24272b',
-        accent: '#2284d9',
-        border_primary: '#373a40',
-        hover_secondary: '#2c2e33',
+        primary: '#101113',
+        secondary: '#1A1B1E',
+        tertiary: '#2C2E33',
+        accent: '#40c057',
+        border_primary: '#373A40',
+        hover_secondary: '#5c5f66',
       }
     },
   },
   plugins: [],
-}
+};

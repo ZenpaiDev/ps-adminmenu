@@ -11,19 +11,19 @@
 </script>
 
 <div
-	class="h-[85vh] flex rounded-[0.5vh] bg-primary {!$MENU_WIDE ? 'w-[40vh] mr-[5vh] ' : 'w-[106vh]'}" transition:fly={{ x: 100 }}
+	class="h-[85vh] flex rounded-[0.5vh] bg-primary bg-opacity-95 {!$MENU_WIDE ? 'w-[40vh] mr-[5vh] ' : 'w-[106vh]'}" transition:fly={{ x: 100 }}
 >
 	<Sidebar />
 	<div class="h-full flex {!$MENU_WIDE ? 'w-[33vh]' : 'w-[99vh]'}">
-		{#if $ACTIVE_PAGE == 'Actions'}
+		{#if $ACTIVE_PAGE == 'Ações'}
 			<Actions />
-		{:else if $ACTIVE_PAGE == 'Server'}
+		{:else if $ACTIVE_PAGE == 'Resources'}
 			<Server />
-		{:else if $ACTIVE_PAGE == 'Staffchat'}
+		{:else if $ACTIVE_PAGE == 'Chat Staff'}
 			<StaffChat />
-		{:else if $ACTIVE_PAGE == 'Players'}
+		{:else if $ACTIVE_PAGE == 'Jogadores'}
 			<Players />
-		{:else if $ACTIVE_PAGE == 'Commands'}
+		{:else if $ACTIVE_PAGE == 'Comandos'}
 			<Commands />
 		{/if}
 	</div>

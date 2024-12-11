@@ -42,5 +42,11 @@ lib.callback.register('ps-adminmenu:callback:ChangeResourceState', function(sour
         print("Restarted " .. data.name)
     end
 
+    if data.state == "check-updates" then
+        local repo = ('mri-Qbox-Brasil/%s'):format(data.name)
+        lib.versionCheck(repo)
+        print("Version Checked ", repo, " for " .. data.name)
+    end
+
     return resources
 end)

@@ -34,5 +34,9 @@
 <AlwaysListener />
 {#if $BROWSER_MODE}
 	<DebugBrowser />
-	<div class="absolute w-screen h-screen bg-neutral-800" />
+	<div class="absolute w-screen h-screen " 
+	style ='background-image: url("https://i.imgur.com/3pzRj9n.png");
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;' />
 {/if}
