@@ -12,7 +12,7 @@ interface DROPDOWN_DATA {
     event?: string;
 }
   
-interface ACITONS_DATA {
+interface ACTIONS_DATA {
     id: string;
     label: string;
     type?: string;

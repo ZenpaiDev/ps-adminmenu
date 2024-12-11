@@ -34,6 +34,6 @@
 		{:else}
 			<ButtonState icon="fas fa-play" resource={label} state={'start'} />
 		{/if}
-		<ButtonState icon="fas fa-cloud-download-alt" resource={label} state={'check-updates'} />
+		<!-- <ButtonState icon="fas fa-cloud-download-alt" resource={label} state={'check-updates'} /> -->
 	</div>
 </button>

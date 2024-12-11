@@ -413,7 +413,7 @@ Config.Actions = {
         perms = "admin",
         dropdown = {
             { label = "Player", option = "dropdown", data = "players" },
-            { label = "Quantidade", option = "text" },
+            { label = "Amount", option = "text" },
             {
                 label = "Tipo",
                 option = "dropdown",
@@ -431,7 +431,7 @@ Config.Actions = {
         label = "Dar Dinheiro para Todos",
         perms = "admin",
         dropdown = {
-            { label = "Quantidade",  option = "text" },
+            { label = "Amount",  option = "text" },
             {
                 label = "Tipo",
                 option = "dropdown",
@@ -450,7 +450,7 @@ Config.Actions = {
         perms = "admin",
         dropdown = {
             { label = "Player", option = "dropdown", data = "players" },
-            { label = "Quantidade", option = "text" },
+            { label = "Amount", option = "text" },
             {
                 label = "Tipo",
                 option = "dropdown",
@@ -469,7 +469,7 @@ Config.Actions = {
         dropdown = {
             { label = "Player",  option = "dropdown", data = "players" },
             { label = "Item",    option = "dropdown", data = "items" },
-            { label = "Quantidade",  option = "text" },
+            { label = "Amount",  option = "text" },
             { label = "Confirmar", option = "button",   type = "server", event = "ps-adminmenu:server:GiveItem" },
         },
     },
@@ -479,7 +479,7 @@ Config.Actions = {
         perms = "mod",
         dropdown = {
             { label = "Item",    option = "dropdown", data = "items" },
-            { label = "Quantidade",  option = "text" },
+            { label = "Amount",  option = "text" },
             { label = "Confirmar", option = "button",   type = "server", event = "ps-adminmenu:server:GiveItemAll" },
         },
     },

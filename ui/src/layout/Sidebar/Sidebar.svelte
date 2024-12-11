@@ -8,6 +8,8 @@
 		{ value: 'Jogadores', icon: 'fas fa-users' },
 		{ value: 'Resources', icon: 'fas fa-server' },
 		{ value: 'Comandos', icon: 'fas fa-slash' },
+		{ value: 'Itens', icon: 'fas fa-box' },
+		{ value: 'Veículos', icon: 'fas fa-car' },
 		{ value: 'Ações', icon: 'fas fa-wand-magic-sparkles' },
 	]
 </script>

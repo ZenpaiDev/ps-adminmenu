@@ -1,3 +1,20 @@
+lib.callback.register('ps-adminmenu:callback:GetVehicles', function()
+    local VEHICLES = {}
+    
+    for vehicle, data in pairs (exports.qbx_core:GetVehiclesByName()) do
+        VEHICLES[#VEHICLES + 1] = { 
+            name = data['name'], 
+            hash = data['hash'],
+            model = data['model'],
+            category = data['category'],
+            brand = data['brand'],
+            price = data['price'],
+        }
+    end
+    
+    return VEHICLES
+end)
+
 -- Admin Car
 RegisterNetEvent('ps-adminmenu:server:SaveCar', function(mods, vehicle, _, plate)
     local src = source
