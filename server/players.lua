@@ -67,15 +67,22 @@ RegisterNetEvent('ps-adminmenu:server:SetJob', function(data, selectedData)
     local Player = QBCore.Functions.GetPlayer(playerId)
     local name = Player.PlayerData.charinfo.firstname .. ' ' .. Player.PlayerData.charinfo.lastname
     local jobInfo = QBCore.Shared.Jobs[Job]
-    local grade = jobInfo["grades"][selectedData["Grade"].value]
+
+    local grade
+    for searchgrade, info in pairs(jobInfo["grades"]) do
+        if searchgrade == tonumber(Grade) then
+            grade = info
+            break
+        end
+    end
 
     if not jobInfo then
-        TriggerClientEvent('QBCore:Notify', source, "Not a valid job", 'error')
+        TriggerClientEvent('QBCore:Notify', source, 'Trabalho inválido.', 'error')
         return
     end
 
     if not grade then
-        TriggerClientEvent('QBCore:Notify', source, "Not a valid grade", 'error')
+        TriggerClientEvent('QBCore:Notify', source, 'Cargo inválido.', 'error')
         return
     end
 
@@ -84,7 +91,7 @@ RegisterNetEvent('ps-adminmenu:server:SetJob', function(data, selectedData)
         exports['qb-phone']:hireUser(tostring(Job), Player.PlayerData.citizenid, tonumber(Grade))
     end
 
-    QBCore.Functions.Notify(src, locale("jobset", name, Job, Grade), 'success', 5000)
+    QBCore.Functions.Notify(src, locale("jobset", name, Job, grade.name), 'success', 5000)
 end)
 
 -- Set Gang
@@ -96,20 +103,26 @@ RegisterNetEvent('ps-adminmenu:server:SetGang', function(data, selectedData)
     local Player = QBCore.Functions.GetPlayer(playerId)
     local name = Player.PlayerData.charinfo.firstname .. ' ' .. Player.PlayerData.charinfo.lastname
     local GangInfo = QBCore.Shared.Gangs[Gang]
-    local grade = GangInfo["grades"][selectedData["Grade"].value]
+    local grade
+    for searchgrade, info in pairs(GangInfo["grades"]) do
+        if searchgrade == tonumber(Grade) then
+            grade = info
+            break
+        end
+    end
 
     if not GangInfo then
-        TriggerClientEvent('QBCore:Notify', source, "Not a valid Gang", 'error')
+        TriggerClientEvent('QBCore:Notify', source, 'Gangue inválida.', 'error')
         return
     end
 
     if not grade then
-        TriggerClientEvent('QBCore:Notify', source, "Not a valid grade", 'error')
+        TriggerClientEvent('QBCore:Notify', source, 'Cargo inválido.', 'error')
         return
     end
 
     Player.Functions.SetGang(tostring(Gang), tonumber(Grade))
-    QBCore.Functions.Notify(src, locale("gangset", name, Gang, Grade), 'success', 5000)
+    QBCore.Functions.Notify(src, locale("gangset", name, Gang, grade.name), 'success', 5000)
 end)
 
 -- Set Perms

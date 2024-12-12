@@ -41,7 +41,6 @@
 
 	async function spawnItemForPlayer() {
 		if (!selectedPlayer || !selectedItem || quantity <= 0) {
-			alert('Selecione um jogador, um item e insira uma quantidade válida!');
 			return;
 		}
 

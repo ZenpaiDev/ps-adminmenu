@@ -62,6 +62,7 @@ end)
 
 -- Open UI Event
 RegisterNetEvent('ps-adminmenu:client:OpenUI', function()
+	if not CheckPerms(Config.OpenPanelPerms) then return end
 	ToggleUI(true)
 end)
 
@@ -80,4 +81,9 @@ end)
 RegisterNUICallback("getPlayers", function(data, cb)
 	local players = lib.callback.await('ps-adminmenu:callback:GetPlayers', false)
 	cb(players)
+end)
+
+-- ExecuteCommand
+RegisterNetEvent('ps-adminmenu:client:ExecuteCommand', function(data)
+	ExecuteCommand(data)
 end)
