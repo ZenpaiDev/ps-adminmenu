@@ -92,7 +92,7 @@
     "vehicle_dev_data": "Informações do veículo",
     "vehicle_max_modded": "Veículo foi modificado ao máximo",
     "vehicle_not_driver": "Não está no assento do motorista",
-    "warned": "Você recebeu um aviso ",
+    "warned": "Você recebeu um aviso",
     "warngiven": "Avisado: ",
     "weatherType": "O clima foi alterado para: %s"
 }

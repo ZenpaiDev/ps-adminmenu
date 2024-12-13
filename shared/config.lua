@@ -27,7 +27,7 @@ Config.Actions = {
         perms = "mod",
         dropdown = {
             { label = "Player", option = "dropdown", data = "players" },
-            { label = "Razão", option = "text" },
+            { label = "Reason", option = "text" },
             {
                 label = "Duração",
                 option = "dropdown",
@@ -609,7 +609,7 @@ Config.Actions = {
         perms = "mod",
         dropdown = {
             { label = "Player",  option = "dropdown", data = "players" },
-            { label = "Razão",  option = "text" },
+            { label = "Reason",  option = "text" },
             { label = "Confirmar", option = "button",   type = "server", event = "ps-adminmenu:server:WarnPlayer" },
         },
     },
@@ -626,7 +626,7 @@ Config.Actions = {
         perms = "mod",
         dropdown = {
             { label = "Player",  option = "dropdown", data = "players" },
-            { label = "Razão",  option = "text" },
+            { label = "Reason",  option = "text" },
             { label = "Confirmar", option = "button",   type = "server", event = "ps-adminmenu:server:KickPlayer" },
         },
     },

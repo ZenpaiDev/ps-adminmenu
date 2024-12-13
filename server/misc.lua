@@ -42,7 +42,7 @@ RegisterNetEvent('ps-adminmenu:server:WarnPlayer', function(data, selectedData)
     local warnId = 'WARN-' .. math.random(1111, 9999)
     if target ~= nil then
         QBCore.Functions.Notify(target.PlayerData.source,
-            locale("warned") .. ", for: " .. locale("reason") .. ": " .. reason, 'inform', 10000)
+            locale("warned") .. ", por: " .. locale("reason") .. ": " .. reason, 'inform', 60000)
         QBCore.Functions.Notify(source,
             locale("warngiven") .. GetPlayerName(target.PlayerData.source) .. ", for: " .. reason)
         MySQL.insert('INSERT INTO player_warns (senderIdentifier, targetIdentifier, reason, warnId) VALUES (?, ?, ?, ?)',

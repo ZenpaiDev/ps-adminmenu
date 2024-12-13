@@ -11,6 +11,11 @@ local function DisabledControls()
     DisableAllControlActions(0)
     DisableAllControlActions(1)
     DisableAllControlActions(2)
+    
+    EnableControlAction(0, 237, true)
+    EnableControlAction(0, 201, true)
+    EnableControlAction(0, 200, true)
+    EnableControlAction(0, 199, true)
     EnableControlAction(0, 220, true)
     EnableControlAction(0, 221, true)
     EnableControlAction(0, 245, true)
@@ -28,7 +33,7 @@ local function SetupCam()
 end
 
 -- Destroys the camera
-local function DestoryCam()
+local function destroyCam()
     Wait(100)
     SetGameplayCamRelativeHeading(0)
     RenderScriptCams(false, true, 1000, true, true)
@@ -98,7 +103,7 @@ end
 
 -- Stops the noclip
 local function StopNoclip()
-    DestoryCam()
+    destroyCam()
     TeleportToGround()
     ToggleBehavior(false)
 end
@@ -122,6 +127,8 @@ end
 
 -- Handels the movement
 local function UpdateMovement()
+    FreezeEntityPosition(ped, true)
+
     local multi = 1.0
     if IsControlAlwaysPressed(0, 21) then
         multi = 2
