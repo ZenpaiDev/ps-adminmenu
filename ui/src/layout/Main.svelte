@@ -10,6 +10,8 @@
 	import Commands from '@pages/Commands/Commands.svelte'
 	import Items from '@pages/Items/Items.svelte'
 	import Vehicles from '@pages/Vehicles/Vehicles.svelte'
+	import Credits from '@pages/Credits/MRIQbox.svelte'
+	import Dashboard from '@pages/Dashboard/Dashboard.svelte'
 </script>
 
 <div
@@ -31,6 +33,10 @@
 			<Items />
 		{:else if $ACTIVE_PAGE == 'Veículos'}
 			<Vehicles />
+		{:else if $ACTIVE_PAGE == 'Créditos'}
+			<Credits />
+		{:else if $ACTIVE_PAGE == 'Dashboard'}
+			<Dashboard />
 		{/if}
 	</div>
 </div>

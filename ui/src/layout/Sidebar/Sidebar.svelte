@@ -11,6 +11,8 @@
 		{ value: 'Itens', icon: 'fas fa-box' },
 		{ value: 'Veículos', icon: 'fas fa-car' },
 		{ value: 'Ações', icon: 'fas fa-wand-magic-sparkles' },
+		{ value: 'Créditos', icon: 'fa-solid fa-copyright' },
+		{ value: 'Dashboard', icon: 'fas fa-chart-line' },
 	]
 </script>
 

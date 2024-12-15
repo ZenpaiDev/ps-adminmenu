@@ -9,6 +9,7 @@ local function setupMenu()
 	local commands = lib.callback.await('ps-adminmenu:callback:GetCommands', false)
 	local items = lib.callback.await('ps-adminmenu:callback:GetItems', false)
 	local vehicles = lib.callback.await('ps-adminmenu:callback:GetVehicles', false)
+	local server = lib.callback.await('ps-adminmenu:callback:GetServerInfo', false)
 	GetData()
 	SendNUIMessage({
 		action = "setupUI",
@@ -18,10 +19,22 @@ local function setupMenu()
 			playerData = PlayerData,
 			commands = commands,
 			items = items,
-			vehicles = vehicles
+			vehicles = vehicles,
+			server = server 
 		}
 	})
 end
+
+RegisterNUICallback('getServerInfo', function(_, cb)
+    local serverInfo = lib.callback.await('ps-adminmenu:callback:GetServerInfo', false)
+    if not serverInfo then
+        print("Erro: Nenhum dado recebido do servidor.")
+        cb({ error = "Erro ao carregar informações do servidor." })
+        return
+    end
+    cb(serverInfo)
+end)
+
 
 -- Event Handlers
 AddEventHandler("QBCore:Client:OnPlayerLoaded", function()

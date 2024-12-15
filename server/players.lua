@@ -1,24 +1,31 @@
 local function getVehicles(cid)
     local result = MySQL.query.await(
-    'SELECT vehicle, plate, fuel, engine, body FROM player_vehicles WHERE citizenid = ?', { cid })
+        'SELECT vehicle, plate, fuel, engine, body FROM player_vehicles WHERE citizenid = ?', { cid }
+    )
     local vehicles = {}
 
     for k, v in pairs(result) do
         local vehicleData = QBCore.Shared.Vehicles[v.vehicle]
 
-        if vehicleData then
-            vehicles[#vehicles + 1] = {
-                id = k,
-                cid = cid,
-                label = vehicleData.name,
-                brand = vehicleData.brand,
-                model = vehicleData.model,
-                plate = v.plate,
-                fuel = v.fuel,
-                engine = v.engine,
-                body = v.body
+        if not vehicleData then
+            vehicleData = {
+                name = ("Veículo Desconhecido (%s)"):format(v.vehicle or "N/A"),
+                brand = "N/A",
+                model = v.vehicle or "N/A"
             }
         end
+        
+        vehicles[#vehicles + 1] = {
+            id = k,
+            cid = cid,
+            label = vehicleData.name,
+            brand = vehicleData.brand,
+            model = vehicleData.model,
+            plate = v.plate,
+            fuel = v.fuel,
+            engine = v.engine,
+            body = v.body
+        }
     end
 
     return vehicles
@@ -41,18 +48,68 @@ local function getPlayers()
             steam = QBCore.Functions.GetIdentifier(k, 'steam'),
             job = playerData.job.label,
             grade = playerData.job.grade.level,
+            gang = playerData.gang.label,
+            gang_grade = playerData.gang.grade.level,
             dob = playerData.charinfo.birthdate,
             cash = playerData.money.cash,
             bank = playerData.money.bank,
+            crypto = playerData.money.crypto,
             phone = playerData.charinfo.phone,
-            vehicles = vehicles
+            vehicles = vehicles,
+            online = true
         }
     end
 
-    table.sort(players, function(a, b) return a.id < b.id end)
+    local result = MySQL.Sync.fetchAll("SELECT * FROM players")
+    for _, player in ipairs(result) do
+        local isOnline = false
+
+        for _, onlinePlayer in ipairs(players) do
+            if onlinePlayer.cid == player.citizenid then
+                isOnline = true
+                break
+            end
+        end
+
+        if not isOnline then
+            local vehicles = getVehicles(player.citizenid)
+
+            local charinfo = json.decode(player.charinfo) or {}
+            local jobinfo = json.decode(player.job) or {}
+            local ganginfo = json.decode(player.gang) or {}
+            local moneyinfo = player.money and json.decode(player.money) or {}
+
+            players[#players + 1] = {
+                id = nil,
+                name = (charinfo.firstname or "N/A") .. ' ' .. (charinfo.lastname or ""),
+                cid = player.citizenid,
+                license = player.license,
+                discord = nil, 
+                steam = nil, 
+                job = jobinfo.label or "Desempregado",
+                grade = jobinfo.grade or 0,
+                gang = ganginfo.label or "Sem filiação",
+                dob = charinfo.birthdate or "Desconhecido",
+                cash = moneyinfo.cash or 0,
+                crypto = moneyinfo.crypto or 0,
+                bank = moneyinfo.bank or 0,
+                phone = charinfo.phone or "Desconhecido",
+                vehicles = vehicles,
+                online = false
+            }
+        end
+    end
+
+    table.sort(players, function(a, b)
+        if a.online == b.online then
+            return a.name < b.name
+        end
+        return a.online and not b.online
+    end)
 
     return players
 end
+
 
 lib.callback.register('ps-adminmenu:callback:GetPlayers', function(source)
     return getPlayers()

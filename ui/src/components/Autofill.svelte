@@ -80,7 +80,7 @@
                         }
                     >
                         <p>{i.name}</p>
-                        <p>({i.id})</p>
+                        <p>({i.id ? i.id : 'Offline'})</p>
                     </button>
                 {/each}
             {:else if data === "vehicles"}
