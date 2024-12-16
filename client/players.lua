@@ -157,6 +157,26 @@ RegisterNetEvent('ps-adminmenu:client:toggleNames', function(data)
     ToggleBlipsAndNames(false)
 end)
 
+-- SetJob
+RegisterNetEvent('ps-adminmenu:client:SetJob', function(data, selectedData)
+    local data = CheckDataFromKey(data)
+    if not data or not CheckPerms(data.perms) then return end
+    local playerId = selectedData["Player"].value
+    if not playerId then return end
+    if not selectedData["Job"] then return end
+    exports.mri_Qbox:setPlayerJob(playerId, {selectedData["Job"].value})
+end)
+
+-- Set Gang
+RegisterNetEvent('ps-adminmenu:client:SetGang', function(data, selectedData)
+    local data = CheckDataFromKey(data)
+    if not data or not CheckPerms(data.perms) then return end
+    local playerId = selectedData["Player"].value
+    if not playerId then return end
+    if not selectedData["Gang"] then return end
+    exports.mri_Qbox:setPlayerGang(playerId, {selectedData["Gang"].value})
+end)
+
 -- Mute Player
 RegisterNetEvent("ps-adminmenu:client:MutePlayer", function(data, selectedData)
     local data = CheckDataFromKey(data)

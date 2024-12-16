@@ -260,23 +260,23 @@ Config.Actions = {
         perms = "mod",
     },
 
-    ["set_perms"] = {
-        label = "Definir Permissões",
-        perms = "admin",
-        dropdown = {
-            { label = "Player",  option = "dropdown", data = "players" },
-            {
-                label = "Permissões",
-                option = "dropdown",
-                data = {
-                    { label = "Moderador", value = "mod" },
-                    { label = "Administrador", value = "admin" },
-                    { label = "Deus", value = "god" },
-                },
-            },
-            { label = "Confirmar", option = "button",   type = "server", event = "ps-adminmenu:server:SetPerms" },
-        },
-    },
+    -- ["set_perms"] = {
+    --     label = "Definir Permissões",
+    --     perms = "admin",
+    --     dropdown = {
+    --         { label = "Player",  option = "dropdown", data = "players" },
+    --         {
+    --             label = "Permissões",
+    --             option = "dropdown",
+    --             data = {
+    --                 { label = "Moderador", value = "mod" },
+    --                 { label = "Administrador", value = "admin" },
+    --                 { label = "Deus", value = "god" },
+    --             },
+    --         },
+    --         { label = "Confirmar", option = "button",   type = "server", event = "ps-adminmenu:server:SetPerms" },
+    --     },
+    -- },
 
     ["set_bucket"] = {
         label = "Definir Bucket de Roteamento",
@@ -392,9 +392,54 @@ Config.Actions = {
         perms = "mod",
         dropdown = {
             { label = "Player",  option = "dropdown", data = "players" },
-            { label = "Job",     option = "dropdown", data = "jobs" },
-            { label = "Grade",   option = "text",     data = "grades" },
+            { label = "Job", option = "dropdown", data = "jobs" },
+            { label = "Confirmar", option = "button",   type = "client", event = "ps-adminmenu:client:SetJob" },
+        },
+    },
+
+    ["fire_job"] = {
+        label = "Demitir do Emprego",
+        perms = "mod",
+        dropdown = {
+            { label = "Player",  option = "dropdown", data = "players" },
+            {    
+                label = "Job",
+                option = "dropdown",
+                data = {
+                    { label = "Desempregado",      value = "unemployed" },
+                },
+            },
+            {    
+                label = "Grade",
+                option = "dropdown",
+                data = {
+                    { label = "Civil",      value = 0 },
+                },
+            },
             { label = "Confirmar", option = "button",   type = "server", event = "ps-adminmenu:server:SetJob" },
+        },
+    },
+
+    ["fire_gang"] = {
+        label = "Demitir do Emprego",
+        perms = "mod",
+        dropdown = {
+            { label = "Player",  option = "dropdown", data = "players" },
+            {    
+                label = "Gang",
+                option = "dropdown",
+                data = {
+                    { label = "Sem gangue",      value = "none" },
+                },
+            },
+            {    
+                label = "Grade",
+                option = "dropdown",
+                data = {
+                    { label = "Civil",      value = 0 },
+                },
+            },
+            { label = "Confirmar", option = "button",   type = "server", event = "ps-adminmenu:server:SetGang" },
         },
     },
 
@@ -404,8 +449,7 @@ Config.Actions = {
         dropdown = {
             { label = "Player",  option = "dropdown", data = "players" },
             { label = "Gang",    option = "dropdown", data = "gangs" },
-            { label = "Grade",   option = "text",     data = "grades" },
-            { label = "Confirmar", option = "button",   type = "server", event = "ps-adminmenu:server:SetGang" },
+            { label = "Confirmar", option = "button",   type = "client", event = "ps-adminmenu:client:SetGang" },
         },
     },
 
@@ -541,7 +585,7 @@ Config.Actions = {
         label = "Teleportar para Localização",
         perms = "mod",
         dropdown = {
-            { label = "Localização", option = "dropdown", data = "locations" },
+            { label = "Location", option = "dropdown", data = "locations" },
             { label = "Confirmar",  option = "button",   type = "client",   event = "ps-adminmenu:client:TeleportToLocation" },
         },
     },

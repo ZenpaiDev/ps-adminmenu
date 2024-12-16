@@ -12,6 +12,7 @@
 	import Vehicles from '@pages/Vehicles/Vehicles.svelte'
 	import Credits from '@pages/Credits/MRIQbox.svelte'
 	import Dashboard from '@pages/Dashboard/Dashboard.svelte'
+	import Groups from '@pages/Groups/Groups.svelte'
 </script>
 
 <div
@@ -27,6 +28,8 @@
 			<StaffChat />
 		{:else if $ACTIVE_PAGE == 'Jogadores'}
 			<Players />
+		{:else if $ACTIVE_PAGE == 'Grupos'}
+			<Groups />
 		{:else if $ACTIVE_PAGE == 'Comandos'}
 			<Commands />
 		{:else if $ACTIVE_PAGE == 'Itens'}

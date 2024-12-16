@@ -3,7 +3,7 @@ fx_version 'cerulean'
 game "gta5"
 
 author 'mur4i'
-version '1.0.2'
+version '2.0.0'
 description 'mri Admin Menu'
 credits "Project Sloth & OK1ez"
 

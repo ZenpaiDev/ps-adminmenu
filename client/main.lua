@@ -96,7 +96,20 @@ RegisterNUICallback("getPlayers", function(data, cb)
 	cb(players)
 end)
 
+-- Get Groups
+RegisterNUICallback("getGroupsData", function(data, cb)
+	local groups = lib.callback.await('ps-adminmenu:callback:GetGroupsData', false)
+	cb(groups)
+end)
+
 -- ExecuteCommand
 RegisterNetEvent('ps-adminmenu:client:ExecuteCommand', function(data)
 	ExecuteCommand(data)
+end)
+
+RegisterNUICallback("executeCommand", function(data, cb)
+	local command = data.command
+	local args = data.args
+	ExecuteCommand(command, args)
+	cb(command)
 end)

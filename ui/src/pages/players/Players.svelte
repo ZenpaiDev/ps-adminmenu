@@ -369,7 +369,8 @@
 					>
 						<p>RG: {$SELECTED_PLAYER.cid}</p>
 						<p>Nome: {$SELECTED_PLAYER.name}</p>
-						<p>Job: {$SELECTED_PLAYER.job}</p>
+						<p>Job: {$SELECTED_PLAYER.job} ({$SELECTED_PLAYER.job_grade})</p>
+						<p>Gangue: {$SELECTED_PLAYER.gang} ({$SELECTED_PLAYER.gang_grade})</p>
 						<p>Carteira: R$ {$SELECTED_PLAYER.cash}</p>
 						<p>Banco: R$ {$SELECTED_PLAYER.bank}</p>
 						<p>Telefone: {$SELECTED_PLAYER.phone}</p>
