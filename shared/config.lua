@@ -421,7 +421,7 @@ Config.Actions = {
     },
 
     ["fire_gang"] = {
-        label = "Demitir do Emprego",
+        label = "Demitir da Gangue",
         perms = "mod",
         dropdown = {
             { label = "Player",  option = "dropdown", data = "players" },
