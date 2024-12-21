@@ -35,8 +35,11 @@ local function getPlayers()
     local players = {}
     local GetPlayers = QBCore.Functions.GetQBPlayers()
 
-    local allJobs = exports.qbx_core:GetJobs()
-    local allGangs = exports.qbx_core:GetGangs()
+    local allJobs
+    if GetResourceState('qbx_core') == 'started' then allJobs = exports.qbx_core:GetJobs() else allJobs = QBCore.Shared.Jobs end
+
+    local allGangs
+    if GetResourceState('qbx_core') == 'started' then allGangs = exports.qbx_core:GetGangs() else allGangs = QBCore.Shared.Gangs end
 
     for k, v in pairs(GetPlayers) do
         local playerData = v.PlayerData

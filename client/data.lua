@@ -31,7 +31,14 @@ end
 local function GetJobs()
     local jobs = {}
 
-    for name, v in pairs(QBCore.Shared.Jobs) do
+    local JOBS
+    if GetResourceState('qbx_core') == 'started' then
+        JOBS = exports.qbx_core:GetJobs()
+    else
+        JOBS = QBCore.Shared.Jobs
+    end
+
+    for name, v in pairs(JOBS) do
         local gradeDataList = {}
 
         for grade, gradeData in pairs(v.grades) do
@@ -48,7 +55,14 @@ end
 local function GetGangs()
     local gangs = {}
 
-    for name, v in pairs(QBCore.Shared.Gangs) do
+    local GANGS
+    if GetResourceState('qbx_core') == 'started' then
+        GANGS = exports.qbx_core:GetGangs()
+    else
+        GANGS = QBCore.Shared.Gangs
+    end
+
+    for name, v in pairs(GANGS) do
         local gradeDataList = {}
 
         for grade, gradeData in pairs(v.grades) do
