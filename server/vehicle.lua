@@ -1,8 +1,15 @@
 lib.callback.register('ps-adminmenu:callback:GetVehicles', function()
-    local VEHICLES = {}
+    local vehicles = {}
     
-    for vehicle, data in pairs (exports.qbx_core:GetVehiclesByName()) do
-        VEHICLES[#VEHICLES + 1] = { 
+    local VEHICLES
+    if GetResourceState('qbx_core') == 'started' then
+        VEHICLES = exports.qbx_core:GetVehiclesByName()
+    else
+        VEHICLES = QBCore.Shared.Vehicles --dunno do it yourself
+    end
+
+    for vehicle, data in pairs () do
+        vehicles[#vehicles + 1] = { 
             name = data['name'], 
             hash = data['hash'],
             model = data['model'],
@@ -12,7 +19,7 @@ lib.callback.register('ps-adminmenu:callback:GetVehicles', function()
         }
     end
     
-    return VEHICLES
+    return vehicles
 end)
 
 -- Admin Car
