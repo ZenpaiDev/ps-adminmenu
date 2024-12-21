@@ -156,7 +156,9 @@ RegisterNetEvent('ps-adminmenu:server:SetJob', function(data, selectedData)
     local Player = QBCore.Functions.GetPlayer(tonumber(playerId))
     local name, citizenid, jobInfo, grade
 
-    jobInfo = QBCore.Shared.Jobs[Job]
+    local JOBS
+    if GetResourceState('qbx_core') == 'started' then JOBS = exports.qbx_core:GetJobs() else JOBS = QBCore.Shared.Jobs end
+    jobInfo = JOBS[Job]
     if not jobInfo then
         TriggerClientEvent('QBCore:Notify', src, 'Trabalho inválido.', 'error')
         return
@@ -219,7 +221,9 @@ RegisterNetEvent('ps-adminmenu:server:SetGang', function(data, selectedData)
     local Player = QBCore.Functions.GetPlayer(tonumber(playerId))
     local name, citizenid, GangInfo, grade
 
-    GangInfo = QBCore.Shared.Gangs[Gang]
+    local GANGS
+    if GetResourceState('qbx_core') == 'started' then GANGS = exports.qbx_core:GetGangs() else GANGS = QBCore.Shared.Gangs end
+    GangInfo = GANGS[Gang]
     if not GangInfo then
         TriggerClientEvent('QBCore:Notify', src, 'Gangue inválida.', 'error')
         return
