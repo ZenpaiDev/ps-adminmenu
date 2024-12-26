@@ -176,7 +176,7 @@ local toogleAdmin = lib.addKeybind({
     description = locale("command_admin_desc"),
     defaultKey = Config.AdminKey,
     onPressed = function(self)
-        ExecuteCommand('admin')
+        ExecuteCommand('adm')
     end
 })
 
