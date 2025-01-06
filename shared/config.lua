@@ -147,7 +147,7 @@ Config.Actions = {
         perms = "mod",
         dropdown = {
             { label = "Player",     option = "dropdown", data = "players" },
-            { label = "Modelos de Ped", option = "dropdown", data = "pedlist" },
+            { label = "Ped Models", option = "dropdown", data = "pedlist" },
             { label = "Confirmar",    option = "button",   type = "server", event = "ps-adminmenu:server:setPed" },
         },
     },
