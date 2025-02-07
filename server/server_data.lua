@@ -18,13 +18,7 @@ lib.callback.register('ps-adminmenu:callback:GetServerInfo', function(source, cb
     end
 
     local players = MySQL.query.await([[
-        SELECT p.*
-        FROM players p
-        INNER JOIN (
-            SELECT license, MIN(citizenid) AS citizenid
-            FROM players
-            GROUP BY license
-        ) sub ON p.citizenid = sub.citizenid;
+        select count(1) from players group by license;
     ]])
 
     local serverInfo = {
