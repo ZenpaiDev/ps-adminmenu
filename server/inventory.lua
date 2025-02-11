@@ -16,7 +16,7 @@ RegisterNetEvent('ps-adminmenu:server:ClearInventory', function(data, selectedDa
     end
 
     if Config.Inventory == 'ox_inventory' then
-        exports.ox_inventory:ClearInventory(player)
+        exports.ox_inventory:ClearInventory(tonumber(player))
     else
         exports[Config.Inventory]:ClearInventory(player, nil)
     end

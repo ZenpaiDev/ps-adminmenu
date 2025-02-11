@@ -128,7 +128,7 @@ Config.Actions = {
         label = "Limpar Inventário Offline",
         perms = "mod",
         dropdown = {
-            { label = "ID do Cidadão", option = "text",   data = "players" },
+            { label = "Citizen ID", option = "text",   data = "players" },
             { label = "Confirmar",    option = "button", type = "server", event = "ps-adminmenu:server:ClearInventoryOffline" },
         },
     },
