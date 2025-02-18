@@ -5,14 +5,14 @@
 
 	let navigation = [
 		{ value: 'Chat Staff', icon: 'fas fa-message' },
-		{ value: 'Jogadores', icon: 'fas fa-user' },
-		{ value: 'Grupos', icon: 'fas fa-users' },
+		{ value: 'Players', icon: 'fas fa-user' },
+		{ value: 'Groups', icon: 'fas fa-users' },
 		{ value: 'Resources', icon: 'fas fa-server' },
-		{ value: 'Comandos', icon: 'fas fa-slash' },
-		{ value: 'Itens', icon: 'fas fa-box' },
-		{ value: 'Veículos', icon: 'fas fa-car' },
-		{ value: 'Ações', icon: 'fas fa-wand-magic-sparkles' },
-		{ value: 'Créditos', icon: 'fa-solid fa-copyright' },
+		{ value: 'Commands', icon: 'fas fa-slash' },
+		{ value: 'Items', icon: 'fas fa-box' },
+		{ value: 'Vehicles', icon: 'fas fa-car' },
+		{ value: 'Actions', icon: 'fas fa-wand-magic-sparkles' },
+		{ value: 'Credits', icon: 'fa-solid fa-copyright' },
 		{ value: 'Dashboard', icon: 'fas fa-chart-line' },
 	]
 </script>
@@ -40,7 +40,7 @@
 	<button
 		class="w-[4vh] h-[4vh] rounded-[0.5vh] hover:bg-tertiary {$DEV_MODE
 			? 'text-accent'
-			: ''}
+			: ''} 
 		relative
 		before:content-[attr(data-tip)]
 		before:absolute
