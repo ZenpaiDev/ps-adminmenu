@@ -20,23 +20,23 @@
 >
 	<Sidebar />
 	<div class="h-full flex {!$MENU_WIDE ? 'w-[33vh]' : 'w-[99vh]'}">
-		{#if $ACTIVE_PAGE == 'Ações'}
+		{#if $ACTIVE_PAGE == 'Actions'}
 			<Actions />
 		{:else if $ACTIVE_PAGE == 'Resources'}
 			<Server />
-		{:else if $ACTIVE_PAGE == 'Chat Staff'}
+		{:else if $ACTIVE_PAGE == 'Staff Chat'}
 			<StaffChat />
-		{:else if $ACTIVE_PAGE == 'Jogadores'}
+		{:else if $ACTIVE_PAGE == 'Players'}
 			<Players />
-		{:else if $ACTIVE_PAGE == 'Grupos'}
+		{:else if $ACTIVE_PAGE == 'Groups'}
 			<Groups />
-		{:else if $ACTIVE_PAGE == 'Comandos'}
+		{:else if $ACTIVE_PAGE == 'Commands'}
 			<Commands />
-		{:else if $ACTIVE_PAGE == 'Itens'}
+		{:else if $ACTIVE_PAGE == 'Items'}
 			<Items />
-		{:else if $ACTIVE_PAGE == 'Veículos'}
+		{:else if $ACTIVE_PAGE == 'Vehicles'}
 			<Vehicles />
-		{:else if $ACTIVE_PAGE == 'Créditos'}
+		{:else if $ACTIVE_PAGE == 'Credits'}
 			<Credits />
 		{:else if $ACTIVE_PAGE == 'Dashboard'}
 			<Dashboard />

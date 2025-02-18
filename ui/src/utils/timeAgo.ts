@@ -1,16 +1,16 @@
 const MONTH_NAMES = [
-	'Janeiro',
-	'Fevereiro',
-	'Março',
-	'Abril',
-	'Maio',
-	'Junho',
-	'Julho',
-	'Agosto',
-	'Setembro',
-	'Outubro',
-	'Novembro',
-	'Dezembro',
+	'January',
+	'February',
+	'March',
+	'April',
+	'May',
+	'June',
+	'July',
+	'August',
+	'September',
+	'October',
+	'November',
+	'December',
 ]
 
 function getFormattedDate(date, prefomattedDate = false, hideYear = false) {
@@ -25,30 +25,30 @@ function getFormattedDate(date, prefomattedDate = false, hideYear = false) {
 	}
 
 	if (prefomattedDate) {
-		return `${prefomattedDate} às ${hours}:${minutes}`
+		return `${prefomattedDate} at ${hours}:${minutes}`
 	}
 
 	if (hideYear) {
-		return `${day} de ${month} às ${hours}:${minutes}`
+		return `${day} of ${month} at ${hours}:${minutes}`
 	}
 
-	return `${day} de ${month} de ${year} às ${hours}:${minutes}`
+	return `${day} of ${month} of ${year} at ${hours}:${minutes}`
 }
 
 export function timeAgo(dateParam) {
 	if (!dateParam) {
-		return 'Desconhecido'
+		return 'Unknown'
 	}
 
 	let date
 	try {
 		date = typeof dateParam === 'object' ? dateParam : new Date(dateParam)
 	} catch (e) {
-		return 'Data inválida'
+		return 'Invalid date'
 	}
 
 	if (isNaN(date)) {
-		return 'Data inválida'
+		return 'Invalid date'
 	}
 	const DAY_IN_MS = 86400000
 	const today = new Date()
@@ -60,17 +60,17 @@ export function timeAgo(dateParam) {
 	const isThisYear = today.getFullYear() === date.getFullYear()
 
 	if (seconds < 5) {
-		return 'Agora mesmo'
+		return 'Just now'
 	} else if (seconds < 60) {
-		return `${seconds} segundos atrás`
+		return `${seconds} seconds ago`
 	} else if (seconds < 90) {
-		return 'Um minuto atrás'
+		return 'One minute ago'
 	} else if (minutes < 60) {
-		return `${minutes} minutos atrás`
+		return `${minutes} minutes ago`
 	} else if (isToday) {
-		return getFormattedDate(date, 'Hoje')
+		return getFormattedDate(date, 'Today')
 	} else if (isYesterday) {
-		return getFormattedDate(date, 'Ontem')
+		return getFormattedDate(date, 'Yesterday')
 	} else if (isThisYear) {
 		return getFormattedDate(date, false, true)
 	}

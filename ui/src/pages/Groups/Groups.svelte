@@ -20,7 +20,7 @@
     loading = true;
     try {
       const response = await SendNUI('getGroupsData');
-      if (!response) throw new Error('Dados de grupos inválidos.');
+      if (!response) throw new Error('Invalid group data.');
 
       groups.jobs = (response.jobs || []).filter(job => job.name.toLowerCase() !== 'unemployed');
       groups.gangs = (response.gangs || []).filter(gang => gang.name.toLowerCase() !== 'none');
@@ -93,7 +93,7 @@
 <div class={`h-full ${$MENU_WIDE ? 'w-full' : 'w-[33vh]'} px-4`}>
   <div class="flex flex-col h-full gap-4">
     <Header
-      title="Grupos - Jobs & Gangs"
+      title="Groups - Jobs & Gangs"
       hasSearch={true}
       hasLargeMenu={$MENU_WIDE}
       onSearchInput={(e) => (search = e.target.value)}
@@ -103,7 +103,7 @@
       on:click={reloadGroups}
       disabled={loading}
     >
-      {loading ? 'Atualizando...' : 'Atualizar'}
+      {loading ? 'Updating...' : 'Update'}
     </button>
 
     <div class="flex flex-col md:flex-row gap-4 h-full overflow-hidden pb-2">
@@ -124,7 +124,7 @@
                 >
                   <div class="flex flex-col">
                     <span class="text-white font-semibold text-xl">{group.label} ({group.name})</span>
-                    <small class="text-gray-400">Membros: {group.members?.length || 0}</small>
+                    <small class="text-gray-400">Members: {group.members?.length || 0}</small>
                   </div>
                   <i
                     class="fas fa-chevron-down text-gray-300 transition-transform duration-200"
@@ -134,7 +134,7 @@
                 {#if !collapsed[`${group.name}-${index}`]}
                   <div class="px-4 py-2 space-y-2">
                     {#if group.members?.length === 0}
-                      <div class="text-gray-500 text-sm font-medium">Sem membros neste grupo.</div>
+                      <div class="text-gray-500 text-sm font-medium">No members in this group.</div>
                     {:else}
                       {#each group.members as member (member.id)}
                         <div class="flex items-center justify-between py-1 border-b border-border_primary last:border-b-0">

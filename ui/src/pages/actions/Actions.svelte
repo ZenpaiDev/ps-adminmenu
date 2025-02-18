@@ -12,7 +12,7 @@
 
 <div class="h-full w-[99vh] px-[2vh]">
 	<Header 
-		title={'Ações'} 
+		title={'Actions'} 
 		hasSearch={true} 
 		hasLargeMenu={true} 
 		onSearchInput={event => $searchActions = event.target.value}

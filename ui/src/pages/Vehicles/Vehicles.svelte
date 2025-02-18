@@ -33,11 +33,10 @@
 		`https://docs.fivem.net/vehicles/${model}.webp`;
 </script>
 
-
 <div class={`h-full ${$MENU_WIDE ? 'w-full' : 'w-[33vh]'} px-4`}>
 	<div class="flex flex-col h-full gap-4">
 		<Header
-			title="Veículos"
+			title="Vehicles"
 			hasSearch={true}
 			hasLargeMenu={true}
 			onSearchInput={(event) => (search = event.target.value)}
@@ -47,11 +46,11 @@
 			{#if $VEHICLES}
 				{#if FilteredVehicles.length === 0}
 					<div class="text-gray-500 text-center text-sm font-medium mt-4">
-						Nenhum veículo encontrado.
+						No vehicles found.
 					</div>
 				{:else}
 					<small class="text-gray-400 font-medium">
-						Total de Veículos: {SortedVehicles.length}
+						Total Vehicles: {SortedVehicles.length}
 					</small>
 					{#each FilteredVehicles as vehicle (vehicle.hash)}
 						<div class="relative flex items-center gap-6 bg-secondary p-6 rounded-lg shadow-md">
@@ -63,24 +62,24 @@
 							/>
 							<div class="flex flex-col flex-grow">
 								<span class="text-white font-bold text-xl truncate">
-									{$MENU_WIDE ? vehicle.name || 'Sem nome' : (vehicle.name || 'Sem nome').substring(0, 20) + (vehicle.name.length > 20 ? '...' : '')}
+									{$MENU_WIDE ? vehicle.name || 'No name' : (vehicle.name || 'No name').substring(0, 20) + (vehicle.name.length > 20 ? '...' : '')}
 								</span>
 								<div class="text-gray-400 text-base">
-									Marca: {vehicle.brand || 'Sem marca'}
+									Brand: {vehicle.brand || 'No brand'}
 								</div>
 								<div class="text-gray-400 text-base">
-									Categoria: {vehicle.category || 'Sem categoria'}
+									Category: {vehicle.category || 'No category'}
 								</div>
 								<div class="flex justify-between text-base text-gray-300 font-medium mt-2">
-									<span>Modelo: {vehicle.model || 'N/A'}</span>
-									<span>Preço: ${vehicle.price || 'N/A'}</span>
+									<span>Model: {vehicle.model || 'N/A'}</span>
+									<span>Price: ${vehicle.price || 'N/A'}</span>
 								</div>
 							</div>
 							<button
 								class="spawn-button absolute top-4 right-4 bg-green-600 hover:bg-green-500 text-white px-4 py-2 rounded"
 								on:click={() => spawnVehicle(vehicle)}
 							>
-								Spawnar
+								Spawn
 							</button>
 						</div>
 					{/each}
@@ -118,7 +117,7 @@
 		border: 1px solid #444;
 		background-color: #2c2c2c;
 
-		/* Adicionando propriedades para suavização */
+		/* Adding properties for smoothing */
 		image-rendering: auto;
 		image-rendering: smooth;
 	}

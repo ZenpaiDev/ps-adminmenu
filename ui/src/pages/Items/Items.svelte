@@ -61,7 +61,7 @@
 <div class={`h-full ${$MENU_WIDE ? 'w-full' : 'w-[33vh]'} px-4`}>
 	<div class="flex flex-col h-full gap-4">
 		<Header
-			title="Itens"
+			title="Items"
 			hasSearch={true}
 			hasLargeMenu={true}
 			onSearchInput={(event) => (search = event.target.value)}
@@ -71,11 +71,11 @@
 			{#if $ITEMS}
 				{#if FilteredItems.length === 0}
 					<div class="text-gray-500 text-center text-sm font-medium mt-4">
-						Nenhum item encontrado.
+						No item found.
 					</div>
 				{:else}
 					<small class="text-gray-400 font-medium">
-						Total de Itens: {SortedItems.length}
+						Total Items: {SortedItems.length}
 					</small>
 					{#each FilteredItems as item (item.item)}
 						<div class="relative flex items-center gap-4 bg-secondary p-4 rounded-lg shadow-md">
@@ -86,10 +86,10 @@
 							></div>
 							<div class="flex flex-col flex-grow">
 								<span class="text-white font-bold text-2xl truncate">
-									{$MENU_WIDE ? item.name || 'Sem nome' : (item.name || 'Sem nome').substring(0, 20) + (item.name.length > 20 ? '...' : '')}
+									{$MENU_WIDE ? item.name || 'No name' : (item.name || 'No name').substring(0, 20) + (item.name.length > 20 ? '...' : '')}
 								</span>
 								<span class="text-gray-400 text-xl">
-									{item.description || 'Sem descrição disponível.'}
+									{item.description || 'No description available.'}
 								</span>
 								<div class="flex justify-between text-lg text-gray-300 font-medium mt-2">
 									<span>ID: {item.item || 'N/A'}</span>
@@ -102,7 +102,7 @@
 								class="spawn-button absolute top-4 right-4 bg-green-600 hover:bg-green-500 text-white px-4 py-2 rounded"
 								on:click={() => openModal(item)}
 							>
-								Spawnar
+								Spawn
 							</button>
 						</div>
 					{/each}
@@ -115,18 +115,18 @@
 {#if isModalOpen}
 	<Modal>
 		<div class="flex justify-between">
-			<p class="font-medium text-[1.8vh]">Dar Item: {selectedItem?.name}</p>
+			<p class="font-medium text-[1.8vh]">Give Item: {selectedItem?.name}</p>
 			<button class="hover:text-accent" on:click={closeModal}>
 				<i class="fas fa-xmark"></i>
 			</button>
 		</div>
 		<Autofill
-			label_title="Selecionar Jogador"
+			label_title="Select Player"
 			data="players"
 			selectedData={(data) => (selectedPlayer = data)}
 		/>
 		<div class="mt-4">
-			<label class="block text-sm font-medium text-gray-300">Quantidade</label>
+			<label class="block text-sm font-medium text-gray-300">Quantity</label>
 			<input
 				type="number"
 				min="1"
@@ -138,7 +138,7 @@
 			class="mt-4 h-[3.8vh] px-[1.5vh] rounded-[0.5vh] bg-secondary hover:bg-opacity-90 border-[0.1vh] border-primary"
 			on:click={spawnItemForPlayer}
 		>
-			<p>Confirmar</p>
+			<p>Confirm</p>
 		</button>
 	</Modal>
 {/if}

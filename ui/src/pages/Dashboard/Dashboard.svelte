@@ -37,7 +37,7 @@
                     characterCount: serverInfo.characterCount || 0,
                 };
             } else {
-                throw new Error('Dados inválidos do servidor');
+                throw new Error('Invalid server data');
             }
 
             const fetchedPlayers = await SendNUI('getPlayers');
@@ -45,10 +45,10 @@
                 players = fetchedPlayers;
                 sortPlayers();
             } else {
-                throw new Error('Dados inválidos de jogadores');
+                throw new Error('Invalid player data');
             }
         } catch (error) {
-            errorMessage = error.message || 'Erro ao carregar dados';
+            errorMessage = error.message || 'Error loading data';
         } finally {
             loading = false;
         }
@@ -88,7 +88,7 @@
 </script>
 
 <div class="h-full w-full px-6 py-6 bg-primary text-white">
-    <Header title={'Dashboard de Jogadores'} />
+    <Header title={'Player Dashboard'} />
 
     {#if loading}
         <div class="flex justify-center items-center h-full">
@@ -101,49 +101,49 @@
             <div class="bg-secondary p-4 rounded-lg shadow flex items-center">
                 <i class="fas fa-wallet text-accent text-3xl mr-4"></i>
                 <div>
-                    <h3 class="text-lg font-semibold">Dinheiro em Mãos</h3>
+                    <h3 class="text-lg font-semibold">Cash in Hand</h3>
                     <p class="text-xl font-bold">R$ {summary.totalCash}</p>
                 </div>
             </div>
             <div class="bg-secondary p-4 rounded-lg shadow flex items-center">
                 <i class="fas fa-piggy-bank text-green-500 text-3xl mr-4"></i>
                 <div>
-                    <h3 class="text-lg font-semibold">Dinheiro no Banco</h3>
+                    <h3 class="text-lg font-semibold">Bank Balance</h3>
                     <p class="text-xl font-bold">R$ {summary.totalBank}</p>
                 </div>
             </div>
             <div class="bg-secondary p-4 rounded-lg shadow flex items-center">
                 <i class="fas fa-coins text-yellow-500 text-3xl mr-4"></i>
                 <div>
-                    <h3 class="text-lg font-semibold">Criptomoedas</h3>
+                    <h3 class="text-lg font-semibold">Cryptocurrencies</h3>
                     <p class="text-xl font-bold">R$ {summary.totalCrypto}</p>
                 </div>
             </div>
             <div class="bg-secondary p-4 rounded-lg shadow flex items-center">
                 <i class="fas fa-users text-blue-500 text-3xl mr-4"></i>
                 <div>
-                    <h3 class="text-lg font-semibold">Jogadores Únicos</h3>
+                    <h3 class="text-lg font-semibold">Unique Players</h3>
                     <p class="text-xl font-bold">{summary.uniquePlayers}</p>
                 </div>
             </div>
             <div class="bg-secondary p-4 rounded-lg shadow flex items-center">
                 <i class="fas fa-car text-red-500 text-3xl mr-4"></i>
                 <div>
-                    <h3 class="text-lg font-semibold">Veículos</h3>
+                    <h3 class="text-lg font-semibold">Vehicles</h3>
                     <p class="text-xl font-bold">{summary.vehicleCount}</p>
                 </div>
             </div>
             <div class="bg-secondary p-4 rounded-lg shadow flex items-center">
                 <i class="fas fa-ban text-purple-500 text-3xl mr-4"></i>
                 <div>
-                    <h3 class="text-lg font-semibold">Banimentos</h3>
+                    <h3 class="text-lg font-semibold">Bans</h3>
                     <p class="text-xl font-bold">{summary.bansCount}</p>
                 </div>
             </div>
             <div class="bg-secondary p-4 rounded-lg shadow flex items-center">
                 <i class="fas fa-id-card text-teal-500 text-3xl mr-4"></i>
                 <div>
-                    <h3 class="text-lg font-semibold">Personagens</h3>
+                    <h3 class="text-lg font-semibold">Characters</h3>
                     <p class="text-xl font-bold">{summary.characterCount}</p>
                 </div>
             </div>
@@ -152,7 +152,7 @@
         <div class="bg-secondary p-4 rounded-lg shadow">
             <input
                 type="text"
-                placeholder="Pesquisar por Nome ou CID..."
+                placeholder="Search by Name or CID..."
                 bind:value={searchQuery}
                 on:input={sortPlayers}
                 class="w-full p-2 rounded-lg border border-border_primary bg-tertiary text-white mb-4"
@@ -164,7 +164,7 @@
                         <tr>
                             <th class="p-2">#</th>
                             <th class="p-2 cursor-pointer" on:click={() => setSort('name')}>
-                                Nome (CitizenID)
+                                Name (CitizenID)
                                 {#if sortKey === 'name'}
                                     {#if sortOrder === 'asc'}
                                         <i class="fas fa-arrow-up ml-1"></i>
@@ -174,7 +174,7 @@
                                 {/if}
                             </th>
                             <th class="p-2 cursor-pointer" on:click={() => setSort('bank')}>
-                                Dinheiro no Banco
+                                Bank Balance
                                 {#if sortKey === 'bank'}
                                     {#if sortOrder === 'asc'}
                                         <i class="fas fa-arrow-up ml-1"></i>
@@ -184,7 +184,7 @@
                                 {/if}
                             </th>
                             <th class="p-2 cursor-pointer" on:click={() => setSort('cash')}>
-                                Dinheiro na Mão
+                                Cash in Hand
                                 {#if sortKey === 'cash'}
                                     {#if sortOrder === 'asc'}
                                         <i class="fas fa-arrow-up ml-1"></i>
@@ -195,7 +195,7 @@
                             </th>
                             <!-- Crypto -->
                             <th class="p-2 cursor-pointer" on:click={() => setSort('crypto')}>
-                                Criptomoedas
+                                Cryptocurrencies
                                 {#if sortKey === 'crypto'}
                                     {#if sortOrder === 'asc'}
                                         <i class="fas fa-arrow-up ml-1"></i>

@@ -45,17 +45,16 @@
 				PLAYER.set(players);
 			}
 		} catch (error) {
-			console.error('Erro ao carregar jogadores:', error);
+			console.error('Error loading players:', error);
 		} finally {
 			loading = false;
 		}
 	});
 </script>
 
-
 <div class="h-full w-[33vh] px-[2vh]">
 	<Header
-		title={'Jogadores'}
+		title={'Players'}
 		hasSearch={true}
 		onSearchInput={(event) => (search = event.target.value)}
 	/>
@@ -63,9 +62,9 @@
 		{#if loading}
 			<Spinner />
 		{:else}
-			<p class="font-medium text-[1.7vh]">Jogadores Online</p>
+			<p class="font-medium text-[1.7vh]">Online Players</p>
 			{#if playersOnline && playersOnline.filter((player) => player.name.toLowerCase().includes(search.toLowerCase())).length === 0}
-				<div class="text-accent text-center text-[1.7vh] font-medium mt-[1vh]">Nenhum jogador online encontrado.</div>
+				<div class="text-accent text-center text-[1.7vh] font-medium mt-[1vh]">No online players found.</div>
 			{:else}
 				{#each playersOnline.filter((player) => player.name.toLowerCase().includes(search.toLowerCase())) as player}
 					<div class="flex items-center gap-[1vh]">
@@ -75,9 +74,9 @@
 				{/each}
 			{/if}
 
-			<p class="font-medium text-[1.7vh] mt-[2vh]">Jogadores Offline</p>
+			<p class="font-medium text-[1.7vh] mt-[2vh]">Offline Players</p>
 			{#if playersOffline && playersOffline.filter((player) => player.name.toLowerCase().includes(search.toLowerCase())).length === 0}
-				<div class="text-accent text-center text-[1.7vh] font-medium mt-[1vh]">Nenhum jogador offline encontrado.</div>
+				<div class="text-accent text-center text-[1.7vh] font-medium mt-[1vh]">No offline players found.</div>
 			{:else}
 				{#each playersOffline.filter((player) => player.name.toLowerCase().includes(search.toLowerCase())) as player}
 					<div class="flex items-center gap-[1vh]">
@@ -90,21 +89,20 @@
 	</div>
 </div>
 
-
 {#if $MENU_WIDE}
 	<div class="h-full w-[66vh] border-l-[0.2vh] border-tertiary p-[2vh]">
 		{#if !$SELECTED_PLAYER}
 			<div
 				class="h-full w-full flex flex-col items-center justify-center"
 			>
-			<div class="text-4xl text-accent">Nenhum jogador selecionado.</div>
+			<div class="text-4xl text-accent">No player selected.</div>
 		</div>
 		{:else}
 			<p class="text-[2vh] font-medium">
 				ID: {$SELECTED_PLAYER.id} - {$SELECTED_PLAYER.name}
 			</p>
 			<div class="w-full h-[96.5%] pt-[2vh] flex flex-col gap-[1vh]">
-				<p class="font-medium text-[1.7vh]">Ações Rápidas</p>
+				<p class="font-medium text-[1.7vh]">Quick Actions</p>
 				{#if $SELECTED_PLAYER.online}
 					<div class="w-full bg-tertiary flex rounded-[0.5vh]">
 						<button
@@ -172,7 +170,7 @@
 							<i class="fas fa-ban"></i>
 						</button>
 						<button
-							title="Teleportar"
+							title="Teleport"
 							class="h-[4.5vh] w-full hover:bg-secondary
 							relative
 							before:content-[attr(data-tip)]
@@ -198,7 +196,7 @@
 
 							hover:before:opacity-100 hover:after:opacity-100
 							"
-							data-tip="Teleportar"
+							data-tip="Teleport"
 							on:click={() =>
 								SendNUI('clickButton', {
 									data: 'teleportToPlayer',
@@ -212,7 +210,7 @@
 							<i class="fas fa-person-walking-arrow-right"></i>
 						</button>
 						<button
-							title="Trazer"
+							title="Bring"
 							class="h-[4.5vh] w-full hover:bg-secondary
 							relative
 							before:content-[attr(data-tip)]
@@ -238,7 +236,7 @@
 
 							hover:before:opacity-100 hover:after:opacity-100
 							"
-							data-tip="Trazer"
+							data-tip="Bring"
 							on:click={() =>
 								SendNUI('clickButton', {
 									data: 'bringPlayer',
@@ -252,8 +250,10 @@
 							<i class="fas fa-person-walking-arrow-loop-left"></i>
 						</button>
 						<button
-							title="Reviver"
-							class="h-[4.5vh] w-full hover:bg-secondary
+							title="Revive"
+							class="h-[4.5vh] w-full
+
+ rounded-r-[0.5vh] hover:bg-secondary
 							relative
 							before:content-[attr(data-tip)]
 							before:absolute
@@ -278,7 +278,7 @@
 
 							hover:before:opacity-100 hover:after:opacity-100
 							"
-							data-tip="Reviver"
+							data-tip="Revive"
 							on:click={() =>
 								SendNUI('clickButton', {
 									data: 'revivePlayer',
@@ -289,218 +289,70 @@
 									},
 								})}
 						>
-							<i class="fas fa-heart-pulse"></i>
-						</button>
-						<button
-							title="Modo Espectador"
-							class="h-[4.5vh] w-full hover:bg-secondary
-							relative
-							before:content-[attr(data-tip)]
-							before:absolute
-							before:px-3 before:py-2
-							before:left-1/2 before:-top-3
-							before:w-max before:max-w-xs
-							before:-translate-x-1/2 before:-translate-y-full
-							before:bg-tertiary before:text-white
-							before:rounded-md before:opacity-0
-							before:translate-all
-
-							after:absolute
-							after:left-1/2 after:-top-3
-							after:h-0 after:w-0
-							after:-translate-x-1/2 after:border-8
-							after:border-t-tertiary
-							after:border-l-transparent
-							after:border-b-transparent
-							after:border-r-transparent
-							after:opacity-0
-							after:transition-all
-
-							hover:before:opacity-100 hover:after:opacity-100
-							"
-							data-tip="Modo Espectador"
-							on:click={() =>
-								SendNUI('clickButton', {
-									data: 'spectate_player',
-									selectedData: {
-										['Player']: {
-											value: $SELECTED_PLAYER.id,
-										},
-									},
-								})}
-						>
-							<i class="fas fa-eye"></i>
+							<i class="fas fa-user-md"></i>
 						</button>
 					</div>
-				{:else}
-					<p class="text-center text-[1.5vh] text-accent">Jogador offline - as ações foram limitadas</p>
 				{/if}
-				<div
-					class="h-[90%] overflow-auto flex flex-col gap-[1vh] select-text"
-				>
-					<p class="font-medium text-[1.7vh]">Licenças</p>
-					<div
-						class="w-full bg-tertiary rounded-[0.5vh] p-[1.5vh] text-[1.5vh]"
-					>
-						<p>{ $SELECTED_PLAYER.discord 
-							? $SELECTED_PLAYER.discord.replace('discord:', 'Discord: ') 
-							: 'Discord: N/A'
-						}</p>
-						<p>{ $SELECTED_PLAYER.license 
-							? $SELECTED_PLAYER.license.replace('license:', 'License: ') 
-							: 'License: N/A'
-						}</p>
-
-						<p>
-							{$SELECTED_PLAYER.fivem
-								? $SELECTED_PLAYER.fivem
-								: ''}
-						</p>
-
-						<p>
-							{$SELECTED_PLAYER.steam
-								? $SELECTED_PLAYER.steam
-								: ''}
-						</p>
-					</div>
-					<p class="font-medium text-[1.7vh]">Informação</p>
-					<div
-						class="w-full bg-tertiary rounded-[0.5vh] p-[1.5vh] text-[1.5vh]"
-					>
-						<p>RG: {$SELECTED_PLAYER.cid}</p>
-						<p>Nome: {$SELECTED_PLAYER.name}</p>
-						<p>Job: {$SELECTED_PLAYER.job} ({$SELECTED_PLAYER.job_grade})</p>
-						<p>Gangue: {$SELECTED_PLAYER.gang} ({$SELECTED_PLAYER.gang_grade})</p>
-						<p>Carteira: R$ {$SELECTED_PLAYER.cash}</p>
-						<p>Banco: R$ {$SELECTED_PLAYER.bank}</p>
-						<p>Telefone: {$SELECTED_PLAYER.phone}</p>
-					</div>
-					<p class="font-medium text-[1.7vh]">Veículos</p>
-					{#each $SELECTED_PLAYER.vehicles as vehicle}
-						<div
-							class="w-full bg-tertiary flex flex-row rounded-[0.5vh] p-[1.5vh] text-[1.5vh]"
-						>
-							<div>
-								<p class=" font-medium text-[1.7vh]">
-									{vehicle.label}
-								</p>
-								<p>Placa: {vehicle.plate}</p>
-							</div>
-							<div class="ml-auto h-full flex items-center">
-								<button
-									class="bg-secondary px-[1vh] py-[0.5vh] rounded-[0.5vh] border border-primary"
-									on:click={() =>
-										SendNUI('clickButton', {
-											data: 'spawnPersonalVehicle',
-											selectedData: {
-												['VehiclePlate']: {
-													value: vehicle.plate,
-												},
-											},
-										})}
-								>
-									Spawnar
-								</button>
-							</div>
-						</div>
-					{/each}
-				</div>
 			</div>
 		{/if}
 	</div>
 {/if}
 
 {#if banPlayer}
-	<Modal>
-		<div class="flex justify-between">
-			<p class="font-medium text-[1.8vh]">Ban {$SELECTED_PLAYER.name}</p>
-			<button
-				class="hover:text-accent"
-				on:click={() => (banPlayer = false)}
-			>
-				<i class="fas fa-xmark"></i>
-			</button>
+	<Modal onClose={() => (banPlayer = false)} title="Ban Player" height="min-h-[20vh]">
+		<div class="w-full flex flex-col gap-[2vh]">
+			<p class="text-[1.7vh] font-medium">
+				Select a duration for the ban of
+				<span class="font-bold"> {$SELECTED_PLAYER.name} </span>
+			</p>
+			{#each banData as { label, value }}
+				<Button
+					class="h-[5vh]"
+					{label}
+					{value}
+					on:click={() =>
+						SendNUI('clickButton', {
+							data: 'banPlayer',
+							selectedData: {
+								['Player']: {
+									value: $SELECTED_PLAYER.id,
+								},
+								['Ban Duration']: {
+									value: value,
+								},
+							},
+						})}
+				/>
+			{/each}
 		</div>
-		<Input
-			data={{
-				label: 'Reason',
-				value: 'reason',
-				id: 'reason',
-			}}
-			selectedData={SelectData}
-		/>
-		<Autofill
-			action={{
-				label: 'Duration',
-				value: 'duration',
-				id: 'duration',
-			}}
-			label_title="Duration"
-			data={banData}
-			selectedData={SelectData}
-		/>
-		<button
-			class="h-[3.8vh] px-[1.5vh] rounded-[0.5vh] bg-secondary hover:bg-opacity-90 border-[0.1vh] border-primary"
-			on:click={() => {
-				// console.log('Time: ', selectedDataArray['Duration'].value)
-				// console.log('reason: ', selectedDataArray['Reason'].value)
-				SendNUI('clickButton', {
-					data: 'banPlayer',
-					selectedData: {
-						['Player']: {
-							value: $SELECTED_PLAYER.id,
-						},
-						['Duration']: {
-							value: selectedDataArray['Duration'].value,
-						},
-						['Reason']: {
-							value: selectedDataArray['Reason'].value,
-						},
-					},
-				})
-			}}
-		>
-			<p>Ban</p>
-		</button>
 	</Modal>
 {/if}
 
 {#if kickPlayer}
-	<Modal>
-		<div class="flex justify-between">
-			<p class="font-medium text-[1.8vh]">Kick {$SELECTED_PLAYER.name}</p>
-			<button
-				class="hover:text-accent"
+	<Modal onClose={() => (kickPlayer = false)} title="Kick Player" height="min-h-[15vh]">
+		<div class="w-full flex flex-col gap-[2vh]">
+			<p class="text-[1.7vh] font-medium">
+				Are you sure you want to kick
+				<span class="font-bold"> {$SELECTED_PLAYER.name} </span>?
+			</p>
+			<Button
+				class="h-[5vh]"
+				label="Yes"
+				on:click={() =>
+					SendNUI('clickButton', {
+						data: 'kickPlayer',
+						selectedData: {
+							['Player']: {
+								value: $SELECTED_PLAYER.id,
+							},
+						},
+					})}
+			/>
+			<Button
+				class="h-[5vh]"
+				label="No"
 				on:click={() => (kickPlayer = false)}
-			>
-				<i class="fas fa-xmark"></i>
-			</button>
+			/>
 		</div>
-		<Input
-			data={{
-				label: 'Reason',
-				value: 'reason',
-				id: 'reason',
-			}}
-			selectedData={SelectData}
-		/>
-		<button
-			class="h-[3.8vh] px-[1.5vh] rounded-[0.5vh] bg-secondary hover:bg-opacity-90 border-[0.1vh] border-primary"
-			on:click={() => {
-				SendNUI('clickButton', {
-					data: 'kickPlayer',
-					selectedData: {
-						['Player']: {
-							value: $SELECTED_PLAYER.id,
-						},
-						['Reason']: {
-							value: $SELECTED_PLAYER.id,
-						},
-					},
-				})
-			}}
-		>
-			<p>Kick</p>
-		</button>
 	</Modal>
 {/if}
