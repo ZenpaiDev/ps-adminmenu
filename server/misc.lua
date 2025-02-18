@@ -18,14 +18,21 @@ RegisterNetEvent('ps-adminmenu:server:BanPlayer', function(data, selectedData)
         DropPlayer(player, locale("banned") .. '\n' .. locale("reason") .. reason .. locale("ban_perm"))
     else
         DropPlayer(player,
-            locale("banned") ..
+            locale("banned") .. 
             '\n' ..
-            locale("reason") ..
-            reason ..
+            locale("reason") .. 
+            reason .. 
             '\n' ..
-            locale("ban_expires") ..
+            locale("ban_expires") .. 
             timeTable['day'] ..
-            '/' .. timeTable['month'] .. '/' .. timeTable['year'] .. ' ' .. timeTable['hour'] .. ':' .. timeTable['min'])
+            '/' ..
+            timeTable['month'] ..
+            '/' .. 
+            timeTable['year'] ..
+            ' ' .. 
+            timeTable['hour'] .. 
+            ':' .. 
+            timeTable['min'])
     end
 
     QBCore.Functions.Notify(source, locale("playerbanned", player, banTime, reason), 'success', 7500)
@@ -42,7 +49,7 @@ RegisterNetEvent('ps-adminmenu:server:WarnPlayer', function(data, selectedData)
     local warnId = 'WARN-' .. math.random(1111, 9999)
     if target ~= nil then
         QBCore.Functions.Notify(target.PlayerData.source,
-            locale("warned") .. ", por: " .. locale("reason") .. ": " .. reason, 'inform', 60000)
+            locale("warned") .. ", for: " .. locale("reason") .. ": " .. reason, 'inform', 60000)
         QBCore.Functions.Notify(source,
             locale("warngiven") .. GetPlayerName(target.PlayerData.source) .. ", for: " .. reason)
         MySQL.insert('INSERT INTO player_warns (senderIdentifier, targetIdentifier, reason, warnId) VALUES (?, ?, ?, ?)',
@@ -224,13 +231,13 @@ RegisterNetEvent('ps-adminmenu:server:ToggleBlackout', function(data)
     local src = source
 
     if Blackout then
-        TriggerClientEvent('QBCore:Notify', src, locale("blackout", "Ativado"), 'primary')
+        TriggerClientEvent('QBCore:Notify', src, locale("blackout", "Activated"), 'primary')
         while Blackout do
             Wait(0)
             exports["qb-weathersync"]:setBlackout(true)
         end
         exports["qb-weathersync"]:setBlackout(false)
-        TriggerClientEvent('QBCore:Notify', src, locale("blackout", "Desativado"), 'primary')
+        TriggerClientEvent('QBCore:Notify', src, locale("blackout", "Deactivated"), 'primary')
     end
 end)
 
