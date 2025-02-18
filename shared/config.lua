@@ -1,6 +1,6 @@
 Config = Config or {}
 
-Config.Fuel = "cdn-fuel"        -- "ps-fuel", "LegacyFuel", "ox_fuel"
+Config.Fuel = "ox_fuel"        -- "ps-fuel", "LegacyFuel", "ox_fuel"
 Config.ResourcePerms = 'admin' -- permission to control resource(start stop restart)
 Config.ShowCommandsPerms = 'admin' -- permission to show all commands
 Config.OpenPanelPerms = { 'admin', 'mod', 'support' }
@@ -8,8 +8,8 @@ Config.RenewedPhone = false    -- if you use qb-phone from renewed. (multijob)
 
 -- Key Bindings
 Config.Keybindings = true
-Config.AdminKey = "0"
-Config.NoclipKey = "9"
+Config.AdminKey = "PAGEDOWN"
+Config.NoclipKey = "PAGEUP"
 
 -- Give Car
 Config.DefaultGarage = "Pillbox Garage Parking"
