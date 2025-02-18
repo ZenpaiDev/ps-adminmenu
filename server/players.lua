@@ -9,7 +9,7 @@ local function getVehicles(cid)
 
         if not vehicleData then
             vehicleData = {
-                name = ("Veículo Desconhecido (%s)"):format(v.vehicle or "N/A"),
+                name = ("Unknown Vehicle (%s)"):format(v.vehicle or "N/A"),
                 brand = "N/A",
                 model = v.vehicle or "N/A"
             }
@@ -53,9 +53,9 @@ local function getPlayers()
             discord = QBCore.Functions.GetIdentifier(k, 'discord'),
             steam = QBCore.Functions.GetIdentifier(k, 'steam'),
             job = playerData.job.label,
-            job_grade = playerData.job.grade.name or "Desconhecido",
+            job_grade = playerData.job.grade.name or "Unknown",
             gang = playerData.gang.label,
-            gang_grade = playerData.gang.grade.name or "Desconhecido",
+            gang_grade = playerData.gang.grade.name or "Unknown",
             dob = playerData.charinfo.birthdate,
             cash = playerData.money.cash,
             bank = playerData.money.bank,
@@ -85,29 +85,29 @@ local function getPlayers()
             local ganginfo = json.decode(player.gang) or {}
             local moneyinfo = player.money and json.decode(player.money) or {}
 
-            local job_label = (jobinfo.name and allJobs[jobinfo.name] and allJobs[jobinfo.name].label) or "Desempregado"
-            local job_grade = "Desconhecido"
+            local job_label = (jobinfo.name and allJobs[jobinfo.name] and allJobs[jobinfo.name].label) or "Unemployed"
+            local job_grade = "Unknown"
 
             if jobinfo.name and allJobs[jobinfo.name] and jobinfo.grade then
                 if type(jobinfo.grade) == "table" then
-                    job_grade = jobinfo.grade.name or "Desconhecido"
+                    job_grade = jobinfo.grade.name or "Unknown"
                 else
                     local gradeKey = tostring(jobinfo.grade)
                     local gradeData = allJobs[jobinfo.name].grades[gradeKey]
-                    job_grade = gradeData and gradeData.name or "Desconhecido"
+                    job_grade = gradeData and gradeData.name or "Unknown"
                 end
             end
 
-            local gang_label = (ganginfo.name and allGangs[ganginfo.name] and allGangs[ganginfo.name].label) or "Sem filiação"
-            local gang_grade = "Desconhecido"
+            local gang_label = (ganginfo.name and allGangs[ganginfo.name] and allGangs[ganginfo.name].label) or "No affiliation"
+            local gang_grade = "Unknown"
 
             if ganginfo.name and allGangs[ganginfo.name] and ganginfo.grade then
                 if type(ganginfo.grade) == "table" then
-                    gang_grade = ganginfo.grade.name or "Desconhecido"
+                    gang_grade = ganginfo.grade.name or "Unknown"
                 else
                     local gradeKey = tostring(ganginfo.grade)
                     local gradeData = allGangs[ganginfo.name].grades[gradeKey]
-                    gang_grade = gradeData and gradeData.name or "Desconhecido"
+                    gang_grade = gradeData and gradeData.name or "Unknown"
                 end
             end
 
@@ -122,11 +122,11 @@ local function getPlayers()
                 job_grade = job_grade,
                 gang = gang_label,
                 gang_grade = gang_grade,
-                dob = charinfo.birthdate or "Desconhecido",
+                dob = charinfo.birthdate or "Unknown",
                 cash = moneyinfo.cash or 0,
                 crypto = moneyinfo.crypto or 0,
                 bank = moneyinfo.bank or 0,
-                phone = charinfo.phone or "Desconhecido",
+                phone = charinfo.phone or "Unknown",
                 vehicles = vehicles,
                 online = false
             }
@@ -160,7 +160,7 @@ RegisterNetEvent('ps-adminmenu:server:SetJob', function(data, selectedData)
     if GetResourceState('qbx_core') == 'started' then JOBS = exports.qbx_core:GetJobs() else JOBS = QBCore.Shared.Jobs end
     jobInfo = JOBS[Job]
     if not jobInfo then
-        TriggerClientEvent('QBCore:Notify', src, 'Trabalho inválido.', 'error')
+        TriggerClientEvent('QBCore:Notify', src, 'Invalid job.', 'error')
         return
     end
 
@@ -172,7 +172,7 @@ RegisterNetEvent('ps-adminmenu:server:SetJob', function(data, selectedData)
     end
 
     if not grade then
-        TriggerClientEvent('QBCore:Notify', src, 'Cargo inválido.', 'error')
+        TriggerClientEvent('QBCore:Notify', src, 'Invalid rank.', 'error')
         return
     end
 
@@ -186,7 +186,7 @@ RegisterNetEvent('ps-adminmenu:server:SetJob', function(data, selectedData)
         end
 
         QBCore.Functions.Notify(src, locale("jobset", name, Job, grade.name), 'success', 5000)
-    else -- Setar player Offline
+    else -- Set player Offline
         local result = MySQL.Sync.fetchAll("SELECT charinfo, job FROM players WHERE citizenid = ?", { playerId })
         if result and result[1] then
             local charinfo = json.decode(result[1].charinfo) or {}
@@ -205,7 +205,7 @@ RegisterNetEvent('ps-adminmenu:server:SetJob', function(data, selectedData)
 
             QBCore.Functions.Notify(src, locale("jobset", name, Job, grade.name), 'success', 5000)
         else
-            TriggerClientEvent('QBCore:Notify', src, 'Jogador offline não encontrado.', 'error')
+            TriggerClientEvent('QBCore:Notify', src, 'Offline player not found.', 'error')
         end
     end
 end)
@@ -225,7 +225,7 @@ RegisterNetEvent('ps-adminmenu:server:SetGang', function(data, selectedData)
     if GetResourceState('qbx_core') == 'started' then GANGS = exports.qbx_core:GetGangs() else GANGS = QBCore.Shared.Gangs end
     GangInfo = GANGS[Gang]
     if not GangInfo then
-        TriggerClientEvent('QBCore:Notify', src, 'Gangue inválida.', 'error')
+        TriggerClientEvent('QBCore:Notify', src, 'Invalid gang.', 'error')
         return
     end
 
@@ -237,7 +237,7 @@ RegisterNetEvent('ps-adminmenu:server:SetGang', function(data, selectedData)
     end
 
     if not grade then
-        TriggerClientEvent('QBCore:Notify', src, 'Cargo inválido.', 'error')
+        TriggerClientEvent('QBCore:Notify', src, 'Invalid rank.', 'error')
         return
     end
 
@@ -265,7 +265,7 @@ RegisterNetEvent('ps-adminmenu:server:SetGang', function(data, selectedData)
 
             QBCore.Functions.Notify(src, locale("gangset", name, Gang, grade.name), 'success', 5000)
         else
-            TriggerClientEvent('QBCore:Notify', src, 'Jogador offline não encontrado.', 'error')
+            TriggerClientEvent('QBCore:Notify', src, 'Offline player not found.', 'error')
         end
     end
 end)
@@ -278,17 +278,28 @@ RegisterNetEvent("ps-adminmenu:server:SetPerms", function(data, selectedData)
     local src = source
     local rank = selectedData["Permissions"].value
     local targetId = selectedData["Player"].value
-    local tPlayer = QBCore.Functions.GetPlayer(tonumber(targetId))
 
-    if not tPlayer then
-        QBCore.Functions.Notify(src, locale("not_online"), "error", 5000)
-        return
+    local Player = QBCore.Functions.GetPlayer(tonumber(targetId))
+
+    local name, citizenid = ""
+    if Player then
+        name = Player.PlayerData.charinfo.firstname .. ' ' .. Player.PlayerData.charinfo.lastname
+        citizenid = Player.PlayerData.citizenid
+        Player.Functions.SetPermissions(rank)
+    else
+        local result = MySQL.Sync.fetchAll("SELECT charinfo FROM players WHERE citizenid = ?", { targetId })
+        if result and result[1] then
+            local charinfo = json.decode(result[1].charinfo) or {}
+            name = (charinfo.firstname or "N/A") .. " " .. (charinfo.lastname or "")
+            citizenid = targetId
+
+            MySQL.Sync.execute("UPDATE players SET permissions = ? WHERE citizenid = ?", { rank, citizenid })
+        else
+            TriggerClientEvent('QBCore:Notify', src, 'Offline player not found.', 'error')
+            return
+        end
     end
-
-    local name = tPlayer.PlayerData.charinfo.firstname .. ' ' .. tPlayer.PlayerData.charinfo.lastname
-
-    QBCore.Functions.AddPermission(tPlayer.PlayerData.source, tostring(rank))
-    QBCore.Functions.Notify(tPlayer.PlayerData.source, locale("player_perms", name, rank), 'success', 5000)
+    QBCore.Functions.Notify(src, locale("setperms", name, rank), 'success', 5000)
 end)
 
 -- Remove Stress

@@ -8,7 +8,7 @@ lib.callback.register('ps-adminmenu:callback:GetVehicles', function()
         VEHICLES = QBCore.Shared.Vehicles --dunno do it yourself
     end
 
-    for vehicle, data in pairs (VEHICLES) do
+    for vehicle, data in pairs(VEHICLES) do
         vehicles[#vehicles + 1] = { 
             name = data['name'], 
             hash = data['hash'],
